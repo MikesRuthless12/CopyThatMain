@@ -1,0 +1,271 @@
+Copy process started at 1/20/2024 2:35:07 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process started at 1/20/2024 2:36:12 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process started at 1/20/2024 2:36:37 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process started at 1/20/2024 2:42:51 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process started at 1/20/2024 2:45:53 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process started at 1/20/2024 2:48:49 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process ended at 1/20/2024 2:49:06 PM
+Copy Operation was Compleed!
+Elapsed Time: 00:00:08
+File Count: 28/28
+Overwrite Type - If Newer
+Processed File Count: 19/28
+Skipped File Count: 9/28
+Total C/M/D: 14.04 MB/14.04 MB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 1/20/2024 2:53:21 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (2)
+
+Copy process started at 1/20/2024 3:00:00 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (3)
+
+Copy process ended at 1/20/2024 3:00:23 PM
+Copy Operation was Compleed!
+Elapsed Time: 00:00:05
+File Count: 28/28
+Overwrite Type - If Newer
+Processed File Count: 19/28
+Skipped File Count: 9/28
+Total C/M/D: 14.04 MB/14.04 MB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 1/20/2024 3:01:16 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (3)
+
+Copy process started at 1/20/2024 3:02:27 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder\Havoc Software
+
+Copy process started at 2/19/2024 9:59:21 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process ended at 2/19/2024 9:59:26 PM
+Copy Operation was Completed!
+Elapsed Time: 00:00:00
+File Count: 0/1,798
+Overwrite Type - If Newer
+Processed File Count: 0/1,798
+Skipped File Count: 0/1,798
+Total C/M/D: 00 B/58.24 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 2/19/2024 10:01:43 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process ended at 2/19/2024 10:02:03 PM
+Copy Operation was Completed!
+Elapsed Time: 00:00:00
+File Count: 0/302
+Overwrite: Do Not Overwrite
+Processed File Count: 0/302
+Skipped File Count: 0/302
+Total C/M/D: 00 B/58.24 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 2/19/2024 10:02:15 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process ended at 2/19/2024 10:02:20 PM
+Copy Operation was Completed!
+Elapsed Time: 00:00:00
+File Count: 0/31
+Overwrite Type: If Newer
+Processed File Count: 0/31
+Skipped File Count: 0/31
+Total C/M/D: 00 B/14.12 MB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 2/19/2024 10:05:03 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process started at 2/19/2024 10:07:09 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (2)
+
+Copy process started at 2/19/2024 10:13:11 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (3)
+
+Copy process started at 2/19/2024 10:17:06 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (4)
+
+Copy process started at 2/19/2024 10:24:09 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (5)
+
+Copy process started at 2/19/2024 10:28:10 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (6)
+
+Copy process started at 2/19/2024 10:38:54 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process started at 2/19/2024 10:54:24 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process started at 2/19/2024 10:55:05 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process started at 2/19/2024 10:59:59 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (2)
+
+Copy process started at 2/19/2024 11:04:57 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (3)
+
+Copy process started at 2/19/2024 11:05:53 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (4)
+
+Copy process started at 2/19/2024 11:06:36 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder (5)
+
+Copy process ended at 2/19/2024 11:11:11 PM
+Copy Operation was Completed!
+Elapsed Time: 00:03:56
+File Count: 302/302
+Overwrite Type - If Newer
+Processed File Count: -1/302
+Skipped File Count: 303/302
+Total C/M/D: 58.24 GB/58.24 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 2/20/2024 4:02:46 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\New folder
+
+Copy process ended at 2/20/2024 4:08:21 PM
+Copy Operation was Completed!
+Elapsed Time: 00:05:03
+File Count: 302/302
+Overwrite Type - If Newer
+Processed File Count: 301/302
+Skipped File Count: 1/302
+Total C/M/D: 58.24 GB/58.24 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 2/21/2024 1:54:31 PM
+Destination Directory: E:\Copy That Test
+
+Copy process ended at 2/21/2024 1:54:55 PM
+Copy Operation was Canceled!
+Elapsed Time: 00:00:21
+File Count: 9/748
+Overwrite Type - If Newer
+Processed File Count: 9/748
+Skipped File Count: 0/748
+Total C/M/D: 999.54 MB/468.23 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 2/21/2024 1:55:36 PM
+Destination Directory: E:\Copy That Test
+
+Copy process ended at 2/21/2024 1:55:56 PM
+Copy Operation was Canceled!
+Elapsed Time: 00:00:15
+File Count: 9/748
+Overwrite: All Files
+Processed File Count: 9/748
+Skipped File Count: 0/748
+Total C/M/D: 764.04 MB/468.23 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 2/21/2024 1:57:49 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\Copy That Test
+
+Copy process ended at 2/21/2024 1:58:08 PM
+Copy Operation was Canceled!
+Elapsed Time: 00:00:15
+File Count: 1/1,798
+Overwrite Type: If Newer
+Processed File Count: 1/1,798
+Skipped File Count: 0/1,798
+Total C/M/D: 0/58.24 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 2/21/2024 1:58:37 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\Copy That Test
+
+Copy process ended at 2/21/2024 1:59:34 PM
+Copy Operation was Canceled!
+Elapsed Time: 00:00:55
+File Count: 1/302
+Overwrite: All Files
+Processed File Count: 1/302
+Skipped File Count: 0/302
+Total C/M/D: 0/58.24 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 2/21/2024 2:00:15 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\Copy That Test
+
+Copy process started at 2/21/2024 2:04:20 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\Copy That
+
+Copy process started at 2/21/2024 2:14:37 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\Copy That
+
+Copy process started at 2/29/2024 10:53:38 AM
+Destination Directory: C:\Users\miken\OneDrive\Desktop\Copy That Test
+
+Copy process ended at 2/29/2024 10:58:10 AM
+Copy Operation was Completed!
+Elapsed Time: 00:03:52
+File Count: 302/1,744
+Overwrite Type - If Newer
+Processed File Count: 301/1,744
+Skipped File Count: 1/1,744
+Total C/M/D: 58.24 GB/58.24 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 5/22/2024 9:45:43 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop
+
+Copy process ended at 5/22/2024 9:47:33 PM
+Copy Operation was Canceled!
+Elapsed Time: 00:01:32
+File Count: 246/303
+Overwrite Type - If Newer
+Processed File Count: 245/303
+Skipped File Count: 1/303
+Total C/M/D: 07.84 GB/58.24 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 5/24/2024 3:06:52 PM
+Destination Directory: E:\
+
+Copy process ended at 5/24/2024 7:04:04 PM
+Copy Operation was Completed!
+Elapsed Time: 01:58:16
+File Count: 15,921/322,662
+Overwrite: Do Not Overwrite
+Processed File Count: -291,484/322,662
+Skipped File Count: 307405/322,662
+Total C/M/D: 925.95 GB/925.95 GB
+Verification Tests: Verify Files Unchecked.
+
+
+Copy process started at 10/15/2024 8:24:10 AM
+Destination Directory: C:\Users\miken\OneDrive\Desktop
+
+Copy process started at 10/25/2024 6:40:02 PM
+Destination Directory: C:\Users\miken\OneDrive\Desktop
+
