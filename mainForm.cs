@@ -464,7 +464,7 @@ namespace Havoc__Copy_That
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-
+            MessageBox.Show("SHIIIIITTTT!!!!");
 
             // Set the application logic - for demonstration purposes, proVersion is set to true
             proVersion = true;
