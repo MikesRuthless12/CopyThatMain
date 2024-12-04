@@ -340,8 +340,8 @@ namespace Havoc__Copy_That
                     totalBytes += fi.Length;
                     totalFolderBytes += fi.Length;
                     // Uncomment the following lines if you want to update UI elements with file count and total copied progress
-                    //fileCountOnLabel.Text = "File Count: 0/" + num.ToString("N0") + "";
-                    //totalCopiedProgressLabel.Text = "Total C/M/D: 0/" + FormatBytes(totalBytes);
+                    //fileCountOnLabel.Text = "File Count: 0 / " + num.ToString("N0") + "";
+                    //totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / " + FormatBytes(totalBytes);
                 }
 
                 // Iterate through each subdirectory in the folder
@@ -385,8 +385,8 @@ namespace Havoc__Copy_That
                     this.fileDirDataGridView.Rows.Add(Havoc__Copy_That.Properties.Resources.icons8_folder_40, "Folder", path.ToString(), fileInfoNow.Name.ToString(), ConvertBytesToMegabytes(totalFolderBytes).ToString("00.00 MB"));
 
                     // Update UI elements with file count and total copied progress
-                    fileCountOnLabel.Text = ($"File Count: 0/{num.ToString("N0")}");
-                    totalCopiedProgressLabel.Text = ($"Total C/M/D: 0/{FormatBytes(totalBytes)}");
+                    fileCountOnLabel.Text = ($"File Count: 0 / {num.ToString("N0")}");
+                    totalCopiedProgressLabel.Text = ($"Total C/M/D: 0 Bytes / {FormatBytes(totalBytes)}");
 
                     // Select the last row in the DataGridView
                     int lastIndex = fileDirDataGridView.Rows.Count - 1;
@@ -419,8 +419,8 @@ namespace Havoc__Copy_That
         private void getFoldersBackgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             // Update UI elements with final file count and total copied progress
-            fileCountOnLabel.Text = "File Count: 0/" + num.ToString("N0") + "";
-            totalCopiedProgressLabel.Text = "Total C/M/D: 0/" + FormatBytes(totalBytes);
+            fileCountOnLabel.Text = "File Count: 0 / " + num.ToString("N0") + "";
+            totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / " + FormatBytes(totalBytes);
 
             // Reset totalFolderBytes and enable the start button
             totalFolderBytes = 0;
@@ -649,7 +649,7 @@ namespace Havoc__Copy_That
                         fc.fileOn++;
 
                         // Update UI elements with current file count
-                        fc.fileCountOnLabel.Text = "File Count: " + fc.fileOn.ToString("N0") + "/" + fc.num.ToString("N0") + "";
+                        fc.fileCountOnLabel.Text = "File Count: " + fc.fileOn.ToString("N0") + " / " + fc.num.ToString("N0") + "";
 
                         // Check if the target file already exists
                         if (File.Exists(fileTargetInfo.FullName))
@@ -763,14 +763,14 @@ namespace Havoc__Copy_That
                         fc.totalBytesProcessed += f2.Length;
                         fc.progressPercentage = (int)((double)fc.totalBytesProcessed / fc.totalBytes * 100);
                         fc.totalPercentDouble = ((double)fc.totalBytesProcessed / fc.totalBytes * 100);
-                        fc.fileCountOnLabel.Text = "File Count: " + fc.fileOn.ToString("N0") + "/" + fc.num.ToString("N0") + "";
+                        fc.fileCountOnLabel.Text = "File Count: " + fc.fileOn.ToString("N0") + " / " + fc.num.ToString("N0") + "";
                         fc.fileCountOnLabel.Refresh();
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.totalCopiedProgressLabel.Refresh();
                         fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                         fc.skippedDataGridView.Rows.Add("Skipped: File Exists", f2.FullName.ToString(), fc.targetDirLabel.Text, f2.Name.ToString(), ConvertBytesToMegabytes(f2.Length).ToString("00.00 MB"));
                         fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(f2.Length);
+                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(f2.Length);
                         fc.fileProcessedLabel.Refresh();
                         fc.skipFileExists = false;
                         goto continueFile;
@@ -784,13 +784,13 @@ namespace Havoc__Copy_That
                         // Update the total bytes processed.
                         fc.totalBytesProcessed += f2.Length;
                         // Update UI elements to reflect the skipped file.
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.totalCopiedProgressLabel.Refresh();
                         fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                         fc.skippedDataGridView.Rows.Add("Skipped: User", f2.FullName.ToString(), fc.targetDirLabel.Text, f2.Name.ToString(), ConvertBytesToMegabytes(f2.Length).ToString("00.00 MB"));
                         fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
                         fc.fileProcessedLabel.Refresh();
-                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(f2.Length);
+                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(f2.Length);
                         fc.fileProcessedLabel.Refresh();
                         fc.skipFileUser = false;
                         // Continue to the next file.
@@ -807,7 +807,7 @@ namespace Havoc__Copy_That
                         fc.totalBytesProcessed += f2.Length;
 
                         // Update UI with progress information
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.totalCopiedProgressLabel.Refresh();
 
                         // Set color for skippedDataGridView row
@@ -821,7 +821,7 @@ namespace Havoc__Copy_That
 
                         // Refresh UI
                         fc.fileProcessedLabel.Refresh();
-                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(f2.Length);
+                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(f2.Length);
                         fc.fileProcessedLabel.Refresh();
 
                         // Reset skipFileExistsOlder flag and continue processing
@@ -840,7 +840,7 @@ namespace Havoc__Copy_That
                         fc.totalBytesProcessed += f2.Length;
 
                         // Update UI with progress information
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.totalCopiedProgressLabel.Refresh();
 
                         // Set color for skippedDataGridView row
@@ -854,7 +854,7 @@ namespace Havoc__Copy_That
 
                         // Refresh UI
                         fc.fileProcessedLabel.Refresh();
-                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(f2.Length);
+                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(f2.Length);
                         fc.fileProcessedLabel.Refresh();
 
                         // Reset skipFileExistsSame flag and continue processing
@@ -865,15 +865,15 @@ namespace Havoc__Copy_That
                         // Update total bytes processed.
                         fc.totalBytesProcessed += f2.Length;
                         // Update UI elements to reflect progress.
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.totalCopiedProgressLabel.Refresh();
                         double totalValue = Math.Round(fc.totalPercentDouble, 3);
                         fc.totalProgressLabel.Text = totalValue.ToString("00.00") + "%";
                         fc.totalProgressBar.Value = fc.progressPercentage;
                         fc.totalProgressBar.Refresh();
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.totalCopiedProgressLabel.Refresh();
-                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(f2.Length);
+                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(f2.Length);
                         fc.fileProcessedLabel.Refresh();
                     }
                     catch (UnauthorizedAccessException)
@@ -903,12 +903,12 @@ namespace Havoc__Copy_That
                         // Update the total bytes processed.
                         fc.totalBytesProcessed += fileInfoNow.Length;
                         // Update UI elements to reflect the skipped file due to unauthorized access.
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.totalCopiedProgressLabel.Refresh();
                         fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                         fc.skippedDataGridView.Rows.Add("Skipped: Unauth. Access", fileInfoNow.FullName.ToString(), fc.targetDirLabel.Text, fileInfoNow.Name.ToString(), ConvertBytesToMegabytes(fileInfoNow.Length).ToString("00.00 MB"));
                         fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(f2.Length);
+                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(f2.Length);
                         fc.fileProcessedLabel.Refresh();
                         double totalValue2 = Math.Round(fc.totalPercentDouble, 3);
                         fc.totalProgressLabel.Text = totalValue2.ToString("00.00") + "%";
@@ -942,12 +942,12 @@ namespace Havoc__Copy_That
                         // Update the total bytes processed.
                         fc.totalBytesProcessed += fileInfoNow.Length;
                         // Update UI elements to reflect the skipped file due to an I/O exception.
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.totalCopiedProgressLabel.Refresh();
                         fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                         fc.skippedDataGridView.Rows.Add("Skipped: IOException", fileInfoNow.FullName.ToString(), fc.targetDirLabel.Text, fileInfoNow.Name.ToString(), ConvertBytesToMegabytes(fileInfoNow.Length).ToString("00.00 MB"));
                         fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(f2.Length);
+                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(f2.Length);
                         fc.fileProcessedLabel.Refresh();
                         double totalValue3 = Math.Round(fc.totalPercentDouble, 3);
                         fc.totalProgressLabel.Text = totalValue3.ToString("00.00") + "%";
@@ -974,7 +974,7 @@ namespace Havoc__Copy_That
                         availableSpaceCopyMove = totalDriveSpace - freeDriveSpace;
 
                         // Update UI element to display total available space.
-                        fc.totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + "/" + FormatBytes(driveSpaceTotal) + "";
+                        fc.totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + " / " + FormatBytes(driveSpaceTotal) + "";
 
                         // If there's not enough space on the drive, display a message box and return.
                         if (fc.totalBytes >= availableSpaceCopyMove)
@@ -1181,12 +1181,12 @@ namespace Havoc__Copy_That
                                 }
                                 // Update total bytes processed and UI elements to reflect the skipped file
                                 totalBytesProcessed += fileInfoNow.Length;
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                 skippedDataGridView.Rows.Add("Skipped: User", sourceDi.FullName.ToString(), targetDirLabel.Text, sourceDi.Name.ToString(), ConvertBytesToMegabytes(sourceDi.Length).ToString("00.00 MB"));
                                 totalSkippedLabel.Text = "Total Skipped Files: " + skippedDataGridView.Rows.Count + "";
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 // Reset skipFileUser flag
                                 skipFileUser = false;
@@ -1203,12 +1203,12 @@ namespace Havoc__Copy_That
                                 }
                                 // Update total bytes processed and UI elements to reflect the skipped file
                                 totalBytesProcessed += fileInfoNow.Length;
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                 skippedDataGridView.Rows.Add("Skipped: Same File", sourceDi.FullName.ToString(), targetDirLabel.Text, sourceDi.Name.ToString(), ConvertBytesToMegabytes(sourceDi.Length).ToString("00.00 MB"));
                                 totalSkippedLabel.Text = "Total Skipped Files: " + skippedDataGridView.Rows.Count + "";
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 // Reset skipFileExistsSame flag
                                 skipFileExistsSame = false;
@@ -1225,12 +1225,12 @@ namespace Havoc__Copy_That
                                 }
                                 // Update total bytes processed and UI elements to reflect the skipped file
                                 totalBytesProcessed += fileInfoNow.Length;
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                 skippedDataGridView.Rows.Add("Skipped: File is Older", sourceDi.FullName.ToString(), targetDirLabel.Text, sourceDi.Name.ToString(), ConvertBytesToMegabytes(sourceDi.Length).ToString("00.00 MB"));
                                 totalSkippedLabel.Text = "Total Skipped Files: " + skippedDataGridView.Rows.Count + "";
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 // Reset skipFileExistsOlder flag
                                 skipFileExistsOlder = false;
@@ -1255,7 +1255,7 @@ namespace Havoc__Copy_That
                                 totalProgressLabel.Text = totalValue.ToString("00.00") + "%";
                                 totalProgressBar.Value = progressPercentage;
                                 totalProgressBar.Refresh();
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 fileProcessedLabel.Refresh();
                             fileCountOne:;
@@ -1288,7 +1288,7 @@ namespace Havoc__Copy_That
                                 // Update total bytes processed
                                 totalBytesProcessed += sourceDi.Length;
                                 // Update UI elements to reflect skipped file due to unauthorized access
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                 skippedDataGridView.Rows.Add("Skipped: Unauth. Access", sourceDi.FullName.ToString(), targetDirLabel.Text, sourceDi.Name.ToString(), ConvertBytesToMegabytes(sourceDi.Length).ToString("00.00 MB"));
@@ -1335,7 +1335,7 @@ namespace Havoc__Copy_That
                                 // Update total bytes processed
                                 totalBytesProcessed += sourceDi.Length;
                                 // Update UI elements to reflect skipped file due to IOException
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                 skippedDataGridView.Rows.Add("Skipped: IOException", sourceDi.FullName.ToString(), targetDirLabel.Text, sourceDi.Name.ToString(), ConvertBytesToMegabytes(sourceDi.Length).ToString("00.00 MB"));
@@ -1370,7 +1370,7 @@ namespace Havoc__Copy_That
                                     driveSpaceAvailable = driveInfo.TotalFreeSpace;
                                     availableSpaceCopyMove = totalDriveSpace - freeDriveSpace;
                                     // Update total hard drive space left label
-                                    totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + "/" + FormatBytes(driveSpaceTotal) + "";
+                                    totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + " / " + FormatBytes(driveSpaceTotal) + "";
                                 }
                                 // Reset variables and UI elements related to file processing
                                 totalBytesProcessedFile = 0;
@@ -1417,12 +1417,63 @@ namespace Havoc__Copy_That
                     "" + elapsedTimeLabel.Text + "" + Environment.NewLine +
                     "" + fileCountOnLabel.Text + "" + Environment.NewLine +
                     "" + overwriteOption + "" + Environment.NewLine +
-                    "Processed File Count: " + processedFiles.ToString("N0") + "/" + num.ToString("N0") + "" + Environment.NewLine +
-                    "Skipped File Count: " + skippedDataGridView.Rows.Count + "/" + num.ToString("N0") + "" + Environment.NewLine +
+                    "Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "" + Environment.NewLine +
+                    "Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "" + Environment.NewLine +
                     "" + totalCopiedProgressLabel.Text + "", "Copy That - File/Directory Tool - Move Operation was Canceled!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Reset various variables and UI elements
-                // ...
+                num = 0;
+                totalBytes = 0;
+                fileDirDataGridView.Rows.Clear();
+                totalPercentDoubleFile = 0;
+                totalPercentDouble = 0;
+                processedFiles = 0;
+                totalBytes = 0;
+                totalBytesProcessed = 0;
+                totalPercentDouble = 0;
+                pct = 0;
+                fileOn = 0;
+                copyMoveDeleteComboBox.Text = string.Empty;
+                elapsedTimeLabel.Text = "Elapsed Time: 00:00:00";
+                timeRemainingLabel.Text = "Time Remaining: 00:00:00";
+                totalProgressBar.Value = 0;
+                fileProgressBar.Value = 0;
+                totalProgressLabel.Text = "0%";
+                fileTotalProgressLabel.Text = "0%";
+                filePathLabel.Text = "Nothing";
+                fileProcessedLabel.Text = "File Processed: 0 Bytes / 0 Bytes";
+                speedLabel.Text = "Speed: 0 MB/Sec.";
+                fromFilesDirLabel.Text = "Select Files/Directory";
+                targetDirLabel.Text = "SelectFiles/Directory";
+                fileCountOnLabel.Text = "File Count: 0 / 0";
+                totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / 0 Bytes";
+                startButton.Enabled = true;
+                cancelButton.Enabled = false;
+                pauseResumeButton.Enabled = false;
+                clearFileListButton.Enabled = true;
+                canceled = false;
+                skipButton.Enabled = false;
+                copyMoveDeleteComboBox.Enabled = true;
+                doNotOverwriteCHKBOX.Enabled = true;
+                overwriteAllCHKBOX.Enabled = true;
+                overwriteIfNewerCHKBOX.Enabled = true;
+                keepDirStructCheckBox.Enabled = true;
+                createCustomDirCheckBox.Enabled = true;
+                copyFilesDirsCheckBox.Enabled = true;
+                clearTextButton.Enabled = true;
+                searchTextBox.Enabled = true;
+                fromDirPicBox.Enabled = true;
+                targetDirPicBox.Enabled = true;
+                fileUpPicBox.Enabled = true;
+                fileDownPicBox.Enabled = true;
+                moveTopPicBox.Enabled = true;
+                moveBottomPicBox.Enabled = true;
+                addFileButton.Enabled = true;
+                removeFileButton.Enabled = true;
+                clearFileListButton.Enabled = true;
+                customFolderName = "";
+                fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
+                fileDirDataGridView.Rows.Clear();
 
             }
             else
@@ -1444,10 +1495,15 @@ namespace Havoc__Copy_That
                     "" + elapsedTimeLabel.Text + "" + Environment.NewLine +
                     "" + fileCountOnLabel.Text + "" + Environment.NewLine +
                     "" + overwriteOption + "" + Environment.NewLine +
-                    "Processed File Count: " + processedFiles.ToString("N0") + "/" + num.ToString("N0") + "" + Environment.NewLine +
-                    "Skipped File Count: " + skippedDataGridView.Rows.Count + "/" + num.ToString("N0") + "" + Environment.NewLine +
+                    "Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "" + Environment.NewLine +
+                    "Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "" + Environment.NewLine +
                     "" + totalCopiedProgressLabel.Text + "", "Copy That - File/Directory Tool - Move Operation was Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Reset various variables and UI elements
                 num = 0;
+                totalBytes = 0;
+                fileDirDataGridView.Rows.Clear();
+                totalPercentDoubleFile = 0;
+                totalPercentDouble = 0;
                 processedFiles = 0;
                 totalBytes = 0;
                 totalBytesProcessed = 0;
@@ -1455,30 +1511,25 @@ namespace Havoc__Copy_That
                 pct = 0;
                 fileOn = 0;
                 copyMoveDeleteComboBox.Text = string.Empty;
-                totalCopiedProgressLabel.Text = "Total C/M/D: 0/0 Bytes";
                 elapsedTimeLabel.Text = "Elapsed Time: 00:00:00";
                 timeRemainingLabel.Text = "Time Remaining: 00:00:00";
                 totalProgressBar.Value = 0;
                 fileProgressBar.Value = 0;
                 totalProgressLabel.Text = "0%";
                 fileTotalProgressLabel.Text = "0%";
-                fileCountOnLabel.Text = "File Count: 0/0";
                 filePathLabel.Text = "Nothing";
+                fileProcessedLabel.Text = "File Processed: 0 Bytes / 0 Bytes";
+                speedLabel.Text = "Speed: 0 MB/Sec.";
                 fromFilesDirLabel.Text = "Select Files/Directory";
                 targetDirLabel.Text = "SelectFiles/Directory";
-                fileProcessedLabel.Text = "File Processed: 0/0 Bytes";
-                speedLabel.Text = "Speed: 0 Mb/Sec.";
-                totalHDSpaceLeftLabel.Text = "Total Space: 0/0 Bytes";
-                totalHDSpaceLeftLabel.Refresh();
-                fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
-                fileDirDataGridView.Rows.Clear();
+                fileCountOnLabel.Text = "File Count: 0 / 0";
+                totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / 0 Bytes";
                 startButton.Enabled = true;
                 cancelButton.Enabled = false;
                 pauseResumeButton.Enabled = false;
                 clearFileListButton.Enabled = true;
                 canceled = false;
                 skipButton.Enabled = false;
-
                 copyMoveDeleteComboBox.Enabled = true;
                 doNotOverwriteCHKBOX.Enabled = true;
                 overwriteAllCHKBOX.Enabled = true;
@@ -1494,6 +1545,12 @@ namespace Havoc__Copy_That
                 fileDownPicBox.Enabled = true;
                 moveTopPicBox.Enabled = true;
                 moveBottomPicBox.Enabled = true;
+                addFileButton.Enabled = true;
+                removeFileButton.Enabled = true;
+                clearFileListButton.Enabled = true;
+                customFolderName = "";
+                fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
+                fileDirDataGridView.Rows.Clear();
 
                 // Enable sorting for each column in the fileDirDataGridView
                 foreach (DataGridViewColumn column in fileDirDataGridView.Columns)
@@ -1505,11 +1562,11 @@ namespace Havoc__Copy_That
                 if (skippedDataGridView.Rows.Count > 0)
                 {
                     // Disable certain buttons and select the skip page in the tab control
-                    ((Control)this.cmdMainPage).Enabled = false;
+                    ((Control)this.cmdMainPage).Enabled = true;
                     ((Control)this.cmdSkipPage).Enabled = true;
-                    ((Control)this.cmdAboutPage).Enabled = false;
-                    ((Control)this.cmdSettingsPage).Enabled = false;
-                    ((Control)this.cmdCopyHistoryPage).Enabled = false;
+                    ((Control)this.cmdAboutPage).Enabled = true;
+                    ((Control)this.cmdSettingsPage).Enabled = true;
+                    ((Control)this.cmdCopyHistoryPage).Enabled = true;
                     tabControl1.SelectedTab = cmdSkipPage;
                 }
                 else
@@ -1680,14 +1737,14 @@ namespace Havoc__Copy_That
                     fc.progressPercentageFile = (int)((double)sourceFileInfo.Length / sourceFileInfo.Length * 100);
                     fc.totalPercentDoubleFile = ((double)sourceFileInfo.Length / sourceFileInfo.Length * 100);
                     // Update UI elements
-                    fc.fileCountOnLabel.Text = "File Count: " + fc.fileOn.ToString("N0") + "/" + fc.num.ToString("N0") + "";
+                    fc.fileCountOnLabel.Text = "File Count: " + fc.fileOn.ToString("N0") + " / " + fc.num.ToString("N0") + "";
                     fc.fileCountOnLabel.Refresh();
-                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                     fc.totalCopiedProgressLabel.Refresh();
                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                     fc.skippedDataGridView.Rows.Add("Skipped: File Exists", sourceFileInfo.FullName.ToString(), destinationFilePath, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
                     fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(sourceFileInfo.Length);
+                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(sourceFileInfo.Length);
                     fc.fileProcessedLabel.Refresh();
                     goto continueFile; // Continue processing
                 skipFileExistsOlderNow: // Label indicating the action if file exists and is older
@@ -1704,12 +1761,12 @@ namespace Havoc__Copy_That
                     fc.progressPercentageFile = (int)((double)sourceFileInfo.Length / sourceFileInfo.Length * 100);
                     fc.totalPercentDoubleFile = ((double)sourceFileInfo.Length / sourceFileInfo.Length * 100);
                     // Update UI elements
-                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                     fc.totalCopiedProgressLabel.Refresh();
                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                     fc.skippedDataGridView.Rows.Add("Skipped: Older File", sourceFileInfo.FullName.ToString(), destinationFilePath, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
                     fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(sourceFileInfo.Length);
+                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(sourceFileInfo.Length);
                     fc.fileProcessedLabel.Refresh();
                     goto continueFile; // Continue processing
 
@@ -1727,12 +1784,12 @@ namespace Havoc__Copy_That
                     fc.progressPercentageFile = (int)((double)sourceFileInfo.Length / sourceFileInfo.Length * 100);
                     fc.totalPercentDoubleFile = ((double)sourceFileInfo.Length / sourceFileInfo.Length * 100);
                     // Update UI elements
-                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                     fc.totalCopiedProgressLabel.Refresh();
                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                     fc.skippedDataGridView.Rows.Add("Skipped: Same File", sourceFileInfo.FullName.ToString(), destinationFilePath, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
                     fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(sourceFileInfo.Length);
+                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(sourceFileInfo.Length);
                     fc.fileProcessedLabel.Refresh();
                     goto continueFile; // Continue processing
 
@@ -1742,7 +1799,7 @@ namespace Havoc__Copy_That
 
 
                     // Update UI elements
-                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                     fc.totalCopiedProgressLabel.Refresh();
                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                     fc.skippedDataGridView.Rows.Add("Skipped: Zero Byte File", sourceFileInfo.FullName.ToString(), destinationFilePath, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
@@ -1753,7 +1810,7 @@ namespace Havoc__Copy_That
                     fc.fileTotalProgressLabel.Text = totalValueFile22.ToString("00.00") + "%";
                     fc.fileProgressBar.Value = fc.progressPercentageFile;
                     fc.fileProgressBar.Refresh();
-                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(sourceFileInfo.Length);
+                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(sourceFileInfo.Length);
                     fc.fileProcessedLabel.Refresh();
 
                     // Select the last row in the DataGridView
@@ -1802,10 +1859,10 @@ namespace Havoc__Copy_That
                 //fc.fileProgressBar.Refresh();
 
 
-                //fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                //fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                 //fc.totalCopiedProgressLabel.Refresh();
 
-                //fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(sourceFileInfo.Length);
+                //fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(sourceFileInfo.Length);
                 //fc.fileProcessedLabel.Refresh();
 
 
@@ -1931,7 +1988,7 @@ namespace Havoc__Copy_That
                     fc.fileOn++;
                     //fc.filePathLabel.Text = sourceFilePath;
                    // fc.filePathLabel.Refresh();
-                    fc.fileCountOnLabel.Text = "File Count: " + fc.fileOn.ToString("N0") + "/" + fc.num.ToString("N0") + "";
+                    fc.fileCountOnLabel.Text = "File Count: " + fc.fileOn.ToString("N0") + " / " + fc.num.ToString("N0") + "";
                     fc.fileCountOnLabel.Refresh();
 
                     // Opening source file for reading
@@ -2097,7 +2154,7 @@ namespace Havoc__Copy_That
                                             driveSpaceAvailable = driveInfo.TotalFreeSpace;
                                             availableSpaceCopyMove = totalDriveSpace - freeDriveSpace;
 
-                                            fc.totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + "/" + FormatBytes(driveSpaceTotal) + "";
+                                            fc.totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + " / " + FormatBytes(driveSpaceTotal) + "";
                                         }
                                         fc.progressPercentage = (int)((double)fc.totalBytesProcessed / fc.totalBytes * 100);
                                         fc.totalPercentDouble = ((double)fc.totalBytesProcessed / fc.totalBytes * 100);
@@ -2119,9 +2176,9 @@ namespace Havoc__Copy_That
                                             fc.totalProgressBar.Value = fc.progressPercentage;
                                             fc.totalProgressBar.Refresh();
                                         }
-                                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                                         fc.totalCopiedProgressLabel.Refresh();
-                                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(sourceFileInfo.Length);
+                                        fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(sourceFileInfo.Length);
                                         fc.fileProcessedLabel.Refresh();
                                         // Round the total percentage of the file processed to 3 decimal places
                                         double totalValueFile2 = Math.Round(fc.totalPercentDoubleFile, 3);
@@ -2150,7 +2207,7 @@ namespace Havoc__Copy_That
                                 SkipZero:
                                     // Update total processed bytes and UI elements to reflect the skipped zero-byte file
                                     // fc.totalBytesProcessed += sourceFileInfo.Length;
-                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                                     fc.totalCopiedProgressLabel.Refresh();
                                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                     fc.skippedDataGridView.Rows.Add("Skipped: Zero Byte File", sourceFileInfo.FullName.ToString(), destinationFilePath, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
@@ -2161,7 +2218,7 @@ namespace Havoc__Copy_That
                                     fc.fileTotalProgressLabel.Text = totalValueFile22.ToString("00.00") + "%";
                                     fc.fileProgressBar.Value = fc.progressPercentageFile;
                                     fc.fileProgressBar.Refresh();
-                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(sourceFileInfo.Length);
+                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(sourceFileInfo.Length);
                                     fc.fileProcessedLabel.Refresh();
                                     goto continueFile;
                                 skippedUnder:
@@ -2181,12 +2238,12 @@ namespace Havoc__Copy_That
                                     fc.totalPercentDoubleFile = ((double)sourceFileInfo.Length / sourceFileInfo.Length * 100);
 
                                     // Update UI labels and controls
-                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                                     fc.totalCopiedProgressLabel.Refresh();
                                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                     fc.skippedDataGridView.Rows.Add("Skipped: Under MB", sourceFileInfo.FullName.ToString(), fc.targetDirLabel.Text, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
                                     fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + bytesToString(sourceFileInfo.Length);
+                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + bytesToString(sourceFileInfo.Length);
                                     fc.fileProcessedLabel.Refresh();
                                     fc.skipFileUser = false;
 
@@ -2209,12 +2266,12 @@ namespace Havoc__Copy_That
                                     fc.totalPercentDoubleFile = ((double)sourceFileInfo.Length / sourceFileInfo.Length * 100);
 
                                     // Update UI labels and controls
-                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                                     fc.totalCopiedProgressLabel.Refresh();
                                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                     fc.skippedDataGridView.Rows.Add("Skipped: Over MB", sourceFileInfo.FullName.ToString(), fc.targetDirLabel.Text, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
                                     fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + bytesToString(sourceFileInfo.Length);
+                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + bytesToString(sourceFileInfo.Length);
                                     fc.fileProcessedLabel.Refresh();
                                     fc.skipFileUser = false;
 
@@ -2242,12 +2299,12 @@ namespace Havoc__Copy_That
                                     fc.totalPercentDoubleFile = ((double)sourceFileInfo.Length / sourceFileInfo.Length * 100);
 
                                     // Update UI labels and controls
-                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                                     fc.totalCopiedProgressLabel.Refresh();
                                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                     fc.skippedDataGridView.Rows.Add("Skipped: User", sourceFileInfo.FullName.ToString(), fc.targetDirLabel.Text, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
                                     fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + bytesToString(sourceFileInfo.Length);
+                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + bytesToString(sourceFileInfo.Length);
                                     fc.fileProcessedLabel.Refresh();
                                     fc.skipFileUser = false;
 
@@ -2273,7 +2330,7 @@ namespace Havoc__Copy_That
                                         driveSpaceTotal = driveInfo.TotalSize;
                                         driveSpaceAvailable = driveInfo.TotalFreeSpace;
                                         availableSpaceCopyMove = totalDriveSpace - freeDriveSpace;
-                                        fc.totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + "/" + FormatBytes(totalDriveSpace) + "";
+                                        fc.totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + " / " + FormatBytes(totalDriveSpace) + "";
                                     }
 
                                     // Restore original file timestamp and dispose file streams
@@ -2305,7 +2362,7 @@ namespace Havoc__Copy_That
 
                                     // Update total processed bytes and UI elements to reflect the skipped file due to unauthorized access
                                     fc.totalBytesProcessed += sourceFileInfo.Length;
-                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                                     fc.totalCopiedProgressLabel.Refresh();
                                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                     fc.skippedDataGridView.Rows.Add("Skipped: Unauth. Access", sourceFileInfo.FullName.ToString(), destinationFilePath, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
@@ -2314,7 +2371,7 @@ namespace Havoc__Copy_That
                                     fc.fileTotalProgressLabel.Text = totalValueFile.ToString("00.00") + "%";
                                     fc.fileProgressBar.Value = fc.progressPercentageFile;
                                     fc.fileProgressBar.Refresh();
-                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(sourceFileInfo.Length);
+                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(sourceFileInfo.Length);
                                     fc.fileProcessedLabel.Refresh();
 
                                     // If there are more files, select the last row in the file directory grid view
@@ -2354,7 +2411,7 @@ namespace Havoc__Copy_That
 
                                     // Update total processed bytes and UI elements to reflect the skipped file due to IOException
                                     fc.totalBytesProcessed += sourceFileInfo.Length;
-                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                                     fc.totalCopiedProgressLabel.Refresh();
                                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                     fc.skippedDataGridView.Rows.Add("Skipped: IOException", sourceFileInfo.FullName.ToString(), destinationFilePath, sourceFileInfo.Name.ToString(), ConvertBytesToMegabytes(sourceFileInfo.Length).ToString("00.00 MB"));
@@ -2364,7 +2421,7 @@ namespace Havoc__Copy_That
                                     fc.fileTotalProgressLabel.Text = totalValueFile.ToString("00.00") + "%";
                                     fc.fileProgressBar.Value = fc.progressPercentageFile;
                                     fc.fileProgressBar.Refresh();
-                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(sourceFileInfo.Length);
+                                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(sourceFileInfo.Length);
                                     fc.fileProcessedLabel.Refresh();
 
                                     // If there are more files, select the last row in the file directory grid view
@@ -2393,7 +2450,7 @@ namespace Havoc__Copy_That
                                         driveSpaceAvailable = driveInfo.TotalFreeSpace;
                                         availableSpaceCopyMove = totalDriveSpace - freeDriveSpace;
 
-                                        fc.totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + "/" + FormatBytes(totalDriveSpace) + "";
+                                        fc.totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + " / " + FormatBytes(totalDriveSpace) + "";
                                     }
                                 }
                             }
@@ -2404,11 +2461,11 @@ namespace Havoc__Copy_That
                             fc.totalProgressBar.Value = fc.progressPercentage;
                             fc.totalProgressBar.Refresh();
 
-                            // MessageBox.Show("Total Space: " + FormatBytes(driveSpaceUsed) + "/" + FormatBytes(driveSpaceAvailable) + "");
+                            // MessageBox.Show("Total Space: " + FormatBytes(driveSpaceUsed) + " / " + FormatBytes(driveSpaceAvailable) + "");
                             // This line of code seems to be commented out, it's not active in the current context
 
                             // Update total copied progress UI elements again
-                            fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                            fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                             fc.totalCopiedProgressLabel.Refresh();
 
                             // Reset some UI elements and variables related to file processing
@@ -2447,7 +2504,7 @@ namespace Havoc__Copy_That
                     // Update total processed bytes and UI elements to reflect the unauthorized access exception
                     var fileInfoNow3 = new FileInfo(sourceFilePath);
                     fc.totalBytesProcessed += fileInfoNow3.Length;
-                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                     fc.totalCopiedProgressLabel.Refresh();
                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                     fc.skippedDataGridView.Rows.Add("Skipped: Unauth. Access", fileInfoNow3.FullName.ToString(), destinationFilePath, fileInfoNow3.Name.ToString(), ConvertBytesToMegabytes(fileInfoNow3.Length).ToString("00.00 MB"));
@@ -2458,7 +2515,7 @@ namespace Havoc__Copy_That
                     fc.fileTotalProgressLabel.Text = totalValueFile.ToString("00.00") + "%";
                     fc.fileProgressBar.Value = fc.progressPercentageFile;
                     fc.fileProgressBar.Refresh();
-                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(fileInfoNow3.Length);
+                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(fileInfoNow3.Length);
                     fc.fileProcessedLabel.Refresh();
 
                     // Select the last row in the file directory grid view if available
@@ -2501,7 +2558,7 @@ namespace Havoc__Copy_That
                     // Update total processed bytes and UI elements to reflect the I/O exception
                     var fileInfoNow4 = new FileInfo(sourceFilePath);
                     fc.totalBytesProcessed += fileInfoNow4.Length;
-                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                    fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                     fc.totalCopiedProgressLabel.Refresh();
                     fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                     fc.skippedDataGridView.Rows.Add("Skipped: IOException", fileInfoNow4.FullName.ToString(), destinationFilePath, fileInfoNow4.Name.ToString(), ConvertBytesToMegabytes(fileInfoNow4.Length).ToString("00.00 MB"));
@@ -2512,7 +2569,7 @@ namespace Havoc__Copy_That
                     fc.fileTotalProgressLabel.Text = totalValueFile.ToString("00.00") + "%";
                     fc.fileProgressBar.Value = fc.progressPercentageFile;
                     fc.fileProgressBar.Refresh();
-                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + "/" + FormatBytes(fileInfoNow4.Length);
+                    fc.fileProcessedLabel.Text = "File Processed: " + FormatBytes(fc.totalBytesProcessedFile) + " / " + FormatBytes(fileInfoNow4.Length);
                     fc.fileProcessedLabel.Refresh();
 
                     // Select the last row in the file directory grid view if available
@@ -3096,11 +3153,11 @@ namespace Havoc__Copy_That
                     // Update UI elements and tab control based on skipped files
                     if (skippedDataGridView.Rows.Count > 0)
                     {
-                        ((Control)this.cmdMainPage).Enabled = false;
+                        ((Control)this.cmdMainPage).Enabled = true;
                         ((Control)this.cmdSkipPage).Enabled = true;
-                        ((Control)this.cmdAboutPage).Enabled = false;
-                        ((Control)this.cmdSettingsPage).Enabled = false;
-                        ((Control)this.cmdCopyHistoryPage).Enabled = false;
+                        ((Control)this.cmdAboutPage).Enabled = true;
+                        ((Control)this.cmdSettingsPage).Enabled = true;
+                        ((Control)this.cmdCopyHistoryPage).Enabled = true;
                         tabControl1.SelectedTab = cmdSkipPage;
                     }
                     else
@@ -3115,13 +3172,17 @@ namespace Havoc__Copy_That
 
                     // Reset various variables and UI elements
                     num = 0;
+                    totalBytes = 0;
                     fileDirDataGridView.Rows.Clear();
                     totalPercentDoubleFile = 0;
                     totalPercentDouble = 0;
                     processedFiles = 0;
+                    totalBytes = 0;
                     totalBytesProcessed = 0;
+                    totalPercentDouble = 0;
                     pct = 0;
                     fileOn = 0;
+                    copyMoveDeleteComboBox.Text = string.Empty;
                     elapsedTimeLabel.Text = "Elapsed Time: 00:00:00";
                     timeRemainingLabel.Text = "Time Remaining: 00:00:00";
                     totalProgressBar.Value = 0;
@@ -3129,20 +3190,18 @@ namespace Havoc__Copy_That
                     totalProgressLabel.Text = "0%";
                     fileTotalProgressLabel.Text = "0%";
                     filePathLabel.Text = "Nothing";
-                    fileProcessedLabel.Text = "File Processed: 0/0 Bytes";
-                    speedLabel.Text = "Speed: 0 Mb/Sec.";
+                    fileProcessedLabel.Text = "File Processed: 0 Bytes / 0 Bytes";
+                    speedLabel.Text = "Speed: 0 MB/Sec.";
                     fromFilesDirLabel.Text = "Select Files/Directory";
                     targetDirLabel.Text = "SelectFiles/Directory";
-                    fileCountOnLabel.Text = "File Count: 0/0";
-                    totalCopiedProgressLabel.Text = "Total C/M/D: 0/0 Bytes";
-                    fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
+                    fileCountOnLabel.Text = "File Count: 0 / 0";
+                    totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / 0 Bytes";
                     startButton.Enabled = true;
                     cancelButton.Enabled = false;
                     pauseResumeButton.Enabled = false;
                     clearFileListButton.Enabled = true;
                     canceled = false;
                     skipButton.Enabled = false;
-                    customFolderName = "";
                     copyMoveDeleteComboBox.Enabled = true;
                     doNotOverwriteCHKBOX.Enabled = true;
                     overwriteAllCHKBOX.Enabled = true;
@@ -3158,6 +3217,12 @@ namespace Havoc__Copy_That
                     fileDownPicBox.Enabled = true;
                     moveTopPicBox.Enabled = true;
                     moveBottomPicBox.Enabled = true;
+                    addFileButton.Enabled = true;
+                    removeFileButton.Enabled = true;
+                    clearFileListButton.Enabled = true;
+                    customFolderName = "";
+                    fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
+                    fileDirDataGridView.Rows.Clear();
                 }
                 // If the cancellation is not due to the conditions specified earlier
                 else
@@ -3209,8 +3274,8 @@ namespace Havoc__Copy_That
                         "" + elapsedTimeLabel.Text + "" + Environment.NewLine +
                         "" + fileCountOnLabel.Text + "" + Environment.NewLine +
                         "" + overwriteOption.ToString() + "" + Environment.NewLine +
-                        "Processed File Count: " + processedFiles.ToString("N0") + "/" + num.ToString("N0") + "" + Environment.NewLine +
-                        "Skipped File Count: " + skippedDataGridView.Rows.Count + "/" + num.ToString("N0") + "" + Environment.NewLine +
+                        "Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "" + Environment.NewLine +
+                        "Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "" + Environment.NewLine +
                         "" + totalCopiedProgressLabel.Text + "" + Environment.NewLine +
                         "Verification Tests: " + verifyStatus + "", "Copy That - File/Directory Tool - Copy Operation was Canceled!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -3228,8 +3293,8 @@ namespace Havoc__Copy_That
                             logWriter.WriteLine($"" + elapsedTimeLabel.Text + "");
                             logWriter.WriteLine($"" + fileCountOnLabel.Text + "");
                             logWriter.WriteLine($"" + overwriteOption.ToString() + "");
-                            logWriter.WriteLine($"Processed File Count: " + processedFiles.ToString("N0") + "/" + num.ToString("N0") + "");
-                            logWriter.WriteLine($"Skipped File Count: " + skippedDataGridView.Rows.Count + "/" + num.ToString("N0") + "");
+                            logWriter.WriteLine($"Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "");
+                            logWriter.WriteLine($"Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "");
                             logWriter.WriteLine("" + totalCopiedProgressLabel.Text + "");
                             logWriter.WriteLine("Verification Tests: " + verifyStatus + "");
                             logWriter.WriteLine();
@@ -3257,12 +3322,12 @@ namespace Havoc__Copy_That
                     totalProgressLabel.Text = "0%";
                     fileTotalProgressLabel.Text = "0%";
                     filePathLabel.Text = "Nothing";
-                    fileProcessedLabel.Text = "File Processed: 0/0 Bytes";
-                    speedLabel.Text = "Speed: 0 Mb/Sec.";
+                    fileProcessedLabel.Text = "File Processed: 0 Bytes / 0 Bytes";
+                    speedLabel.Text = "Speed: 0 MB/Sec.";
                     fromFilesDirLabel.Text = "Select Files/Directory";
                     targetDirLabel.Text = "SelectFiles/Directory";
-                    fileCountOnLabel.Text = "File Count: 0/0";
-                    totalCopiedProgressLabel.Text = "Total C/M/D: 0/0 Bytes";
+                    fileCountOnLabel.Text = "File Count: 0 / 0";
+                    totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / 0 Bytes";
                     startButton.Enabled = true;
                     cancelButton.Enabled = false;
                     pauseResumeButton.Enabled = false;
@@ -3284,6 +3349,9 @@ namespace Havoc__Copy_That
                     fileDownPicBox.Enabled = true;
                     moveTopPicBox.Enabled = true;
                     moveBottomPicBox.Enabled = true;
+                    addFileButton.Enabled = true;
+                    removeFileButton.Enabled = true;
+                    clearFileListButton.Enabled = true;
                     customFolderName = "";
                     fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
                     fileDirDataGridView.Rows.Clear();
@@ -3297,11 +3365,11 @@ namespace Havoc__Copy_That
                     if (skippedDataGridView.Rows.Count > 0)
                     {
                         // Disable certain controls and enable the skip page
-                        ((Control)this.cmdMainPage).Enabled = false;
+                        ((Control)this.cmdMainPage).Enabled = true;
                         ((Control)this.cmdSkipPage).Enabled = true;
-                        ((Control)this.cmdAboutPage).Enabled = false;
-                        ((Control)this.cmdSettingsPage).Enabled = false;
-                        ((Control)this.cmdCopyHistoryPage).Enabled = false;
+                        ((Control)this.cmdAboutPage).Enabled = true;
+                        ((Control)this.cmdSettingsPage).Enabled = true;
+                        ((Control)this.cmdCopyHistoryPage).Enabled = true;
                         // Set the selected tab to the skip page in the tab control
                         tabControl1.SelectedTab = cmdSkipPage;
                     }
@@ -3355,11 +3423,11 @@ namespace Havoc__Copy_That
                     // Enable or disable controls based on the presence of skipped files
                     if (skippedDataGridView.Rows.Count > 0)
                     {
-                        ((Control)this.cmdMainPage).Enabled = false;
+                        ((Control)this.cmdMainPage).Enabled = true;
                         ((Control)this.cmdSkipPage).Enabled = true;
-                        ((Control)this.cmdAboutPage).Enabled = false;
-                        ((Control)this.cmdSettingsPage).Enabled = false;
-                        ((Control)this.cmdCopyHistoryPage).Enabled = false;
+                        ((Control)this.cmdAboutPage).Enabled = true;
+                        ((Control)this.cmdSettingsPage).Enabled = true;
+                        ((Control)this.cmdCopyHistoryPage).Enabled = true;
                         tabControl1.SelectedTab = cmdSkipPage;
                     }
                     else
@@ -3372,38 +3440,38 @@ namespace Havoc__Copy_That
                         tabControl1.SelectedTab = cmdMainPage;
                     }
 
-                    // Reset various variables and labels
+                    // Reset various variables and UI elements
                     num = 0;
+                    totalBytes = 0;
                     fileDirDataGridView.Rows.Clear();
                     totalPercentDoubleFile = 0;
                     totalPercentDouble = 0;
                     processedFiles = 0;
                     totalBytes = 0;
                     totalBytesProcessed = 0;
+                    totalPercentDouble = 0;
                     pct = 0;
                     fileOn = 0;
                     copyMoveDeleteComboBox.Text = string.Empty;
                     elapsedTimeLabel.Text = "Elapsed Time: 00:00:00";
                     timeRemainingLabel.Text = "Time Remaining: 00:00:00";
-                    fileCountOnLabel.Text = "File Count: 0/0";
-                    totalCopiedProgressLabel.Text = "Total C/M/D: 0/0 Bytes";
                     totalProgressBar.Value = 0;
                     fileProgressBar.Value = 0;
                     totalProgressLabel.Text = "0%";
                     fileTotalProgressLabel.Text = "0%";
                     filePathLabel.Text = "Nothing";
-                    fileProcessedLabel.Text = "File Processed: 0/0 Bytes";
-                    speedLabel.Text = "Speed: 0 Mb/Sec.";
+                    fileProcessedLabel.Text = "File Processed: 0 Bytes / 0 Bytes";
+                    speedLabel.Text = "Speed: 0 MB/Sec.";
                     fromFilesDirLabel.Text = "Select Files/Directory";
                     targetDirLabel.Text = "SelectFiles/Directory";
-                    fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
+                    fileCountOnLabel.Text = "File Count: 0 / 0";
+                    totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / 0 Bytes";
                     startButton.Enabled = true;
                     cancelButton.Enabled = false;
                     pauseResumeButton.Enabled = false;
                     clearFileListButton.Enabled = true;
                     canceled = false;
                     skipButton.Enabled = false;
-                    customFolderName = "";
                     copyMoveDeleteComboBox.Enabled = true;
                     doNotOverwriteCHKBOX.Enabled = true;
                     overwriteAllCHKBOX.Enabled = true;
@@ -3419,6 +3487,12 @@ namespace Havoc__Copy_That
                     fileDownPicBox.Enabled = true;
                     moveTopPicBox.Enabled = true;
                     moveBottomPicBox.Enabled = true;
+                    addFileButton.Enabled = true;
+                    removeFileButton.Enabled = true;
+                    clearFileListButton.Enabled = true;
+                    customFolderName = "";
+                    fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
+                    fileDirDataGridView.Rows.Clear();
 
                 }
                 else
@@ -3458,8 +3532,8 @@ namespace Havoc__Copy_That
                         "" + elapsedTimeLabel.Text + "" + Environment.NewLine +
                         "" + fileCountOnLabel.Text + "" + Environment.NewLine +
                         "" + overwriteOption.ToString() + "" + Environment.NewLine +
-                        "Processed File Count: " + processedFiles.ToString("N0") + "/" + num.ToString("N0") + "" + Environment.NewLine +
-                        "Skipped File Count: " + skippedDataGridView.Rows.Count + "/" + num.ToString("N0") + "" + Environment.NewLine +
+                        "Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "" + Environment.NewLine +
+                        "Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "" + Environment.NewLine +
                         "" + totalCopiedProgressLabel.Text + "" + Environment.NewLine +
                         "Verification Tests: " + verifyStatus + "", "Copy That - File/Directory Tool - Copy Operation was Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -3477,8 +3551,8 @@ namespace Havoc__Copy_That
                             logWriter.WriteLine($"" + elapsedTimeLabel.Text + "");
                             logWriter.WriteLine($"" + fileCountOnLabel.Text + "");
                             logWriter.WriteLine($"" + overwriteOption.ToString() + "");
-                            logWriter.WriteLine($"Processed File Count: " + processedFiles.ToString("N0") + "/" + num.ToString("N0") + "");
-                            logWriter.WriteLine($"Skipped File Count: " + skippedDataGridView.Rows.Count + "/" + num.ToString("N0") + "");
+                            logWriter.WriteLine($"Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "");
+                            logWriter.WriteLine($"Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "");
                             logWriter.WriteLine("" + totalCopiedProgressLabel.Text + "");
                             logWriter.WriteLine("Verification Tests: " + verifyStatus + "");
                             logWriter.WriteLine();
@@ -3497,11 +3571,11 @@ namespace Havoc__Copy_That
                     if (skippedDataGridView.Rows.Count > 0)
                     {
                         // Disable certain controls and switch to the Skip Page tab if there are skipped items
-                        ((Control)this.cmdMainPage).Enabled = false;
+                        ((Control)this.cmdMainPage).Enabled = true;
                         ((Control)this.cmdSkipPage).Enabled = true;
-                        ((Control)this.cmdAboutPage).Enabled = false;
-                        ((Control)this.cmdSettingsPage).Enabled = false;
-                        ((Control)this.cmdCopyHistoryPage).Enabled = false;
+                        ((Control)this.cmdAboutPage).Enabled = true;
+                        ((Control)this.cmdSettingsPage).Enabled = true;
+                        ((Control)this.cmdCopyHistoryPage).Enabled = true;
                         tabControl1.SelectedTab = cmdSkipPage;
                     }
                     else
@@ -3516,9 +3590,11 @@ namespace Havoc__Copy_That
                     }
 
                     // Reset various variables and UI elements
+                    num = 0;
+                    totalBytes = 0;
+                    fileDirDataGridView.Rows.Clear();
                     totalPercentDoubleFile = 0;
                     totalPercentDouble = 0;
-                    num = 0;
                     processedFiles = 0;
                     totalBytes = 0;
                     totalBytesProcessed = 0;
@@ -3526,8 +3602,6 @@ namespace Havoc__Copy_That
                     pct = 0;
                     fileOn = 0;
                     copyMoveDeleteComboBox.Text = string.Empty;
-                    fileCountOnLabel.Text = "File Count: 0/0";
-                    totalCopiedProgressLabel.Text = "Total C/M/D: 0/0 Bytes";
                     elapsedTimeLabel.Text = "Elapsed Time: 00:00:00";
                     timeRemainingLabel.Text = "Time Remaining: 00:00:00";
                     totalProgressBar.Value = 0;
@@ -3535,21 +3609,18 @@ namespace Havoc__Copy_That
                     totalProgressLabel.Text = "0%";
                     fileTotalProgressLabel.Text = "0%";
                     filePathLabel.Text = "Nothing";
+                    fileProcessedLabel.Text = "File Processed: 0 Bytes / 0 Bytes";
+                    speedLabel.Text = "Speed: 0 Mb/Sec.";
                     fromFilesDirLabel.Text = "Select Files/Directory";
                     targetDirLabel.Text = "SelectFiles/Directory";
-                    fileProcessedLabel.Text = "File Processed: 0/0 Bytes";
-                    speedLabel.Text = "Speed: 0 Mb/Sec.";
-                    totalHDSpaceLeftLabel.Text = "Total Space: 0/0 Bytes";
-                    totalHDSpaceLeftLabel.Refresh();
-                    fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
-                    fileDirDataGridView.Rows.Clear();
+                    fileCountOnLabel.Text = "File Count: 0 / 0";
+                    totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / 0 Bytes";
                     startButton.Enabled = true;
                     cancelButton.Enabled = false;
                     pauseResumeButton.Enabled = false;
                     clearFileListButton.Enabled = true;
                     canceled = false;
                     skipButton.Enabled = false;
-                    customFolderName = "";
                     copyMoveDeleteComboBox.Enabled = true;
                     doNotOverwriteCHKBOX.Enabled = true;
                     overwriteAllCHKBOX.Enabled = true;
@@ -3565,6 +3636,12 @@ namespace Havoc__Copy_That
                     fileDownPicBox.Enabled = true;
                     moveTopPicBox.Enabled = true;
                     moveBottomPicBox.Enabled = true;
+                    addFileButton.Enabled = true;
+                    removeFileButton.Enabled = true;
+                    clearFileListButton.Enabled = true;
+                    customFolderName = "";
+                    fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
+                    fileDirDataGridView.Rows.Clear();
 
 
                     string selectedOption = onFinishComboBox.SelectedItem.ToString();
@@ -3753,7 +3830,7 @@ namespace Havoc__Copy_That
                         fc.skippedDataGridView.Rows.Add("Skipped: User", fileNow.FullName.ToString(), fc.targetDirLabel.Text, fileNow.Name.ToString(), ConvertBytesToMegabytes(fileNow.Length).ToString("00.00 MB"));
                         fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
                         fc.fileProcessedLabel.Refresh();
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.fileProcessedLabel.Refresh();
 
                     continueFile:
@@ -3771,7 +3848,7 @@ namespace Havoc__Copy_That
                         fc.totalProgressLabel.Text = totalValue.ToString("00.00") + "%";
                         fc.totalProgressBar.Value = fc.progressPercentage;
                         fc.totalProgressBar.Refresh();
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.fileProcessedLabel.Refresh();
 
                     fileCountOne:;
@@ -3807,7 +3884,7 @@ namespace Havoc__Copy_That
                         fc.totalProgressLabel.Text = totalValue.ToString("00.00") + "%";
                         fc.totalProgressBar.Value = fc.progressPercentage;
                         fc.totalProgressBar.Refresh();
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.fileProcessedLabel.Refresh();
                     }
                     catch (IOException)
@@ -3833,7 +3910,7 @@ namespace Havoc__Copy_That
                         fc.skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                         fc.skippedDataGridView.Rows.Add("Skipped: IOException", fileNow.FullName.ToString(), fc.targetDirLabel.Text, fileNow.Name.ToString(), ConvertBytesToMegabytes(fileNow.Length).ToString("00.00 MB"));
                         fc.totalSkippedLabel.Text = "Total Skipped Files: " + fc.skippedDataGridView.Rows.Count + "";
-                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + "/" + FormatBytes(fc.totalBytes) + "";
+                        fc.totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(fc.totalBytesProcessed) + " / " + FormatBytes(fc.totalBytes) + "";
                         fc.fileProcessedLabel.Refresh();
                         if (fc.fileDirDataGridView.Rows.Count > 0)
                         {
@@ -4011,7 +4088,7 @@ namespace Havoc__Copy_That
                                     goto continueFile;
                                 }
                                 totalBytesProcessed += fileInfoNow.Length;
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                 skippedDataGridView.Rows.Add("Skipped: User", fileInfoNow.FullName.ToString(), targetDirLabel.Text, fileInfoNow.Name.ToString(), ConvertBytesToMegabytes(fileInfoNow.Length).ToString("00.00 MB"));
@@ -4039,7 +4116,7 @@ namespace Havoc__Copy_That
                                 totalProgressLabel.Text = totalValue.ToString("00.00") + "%";
                                 totalProgressBar.Value = progressPercentage;
                                 totalProgressBar.Refresh();
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
 
                             fileCountOne:;
@@ -4063,7 +4140,7 @@ namespace Havoc__Copy_That
                                     exitPlease();
                                 }
                                 totalBytesProcessed += fileInfoNow.Length;
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                 skippedDataGridView.Rows.Add("Skipped: Unauth. Access", fileInfoNow.FullName.ToString(), targetDirLabel.Text, fileInfoNow.Name.ToString(), ConvertBytesToMegabytes(fileInfoNow.Length).ToString("00.00 MB"));
@@ -4108,7 +4185,7 @@ namespace Havoc__Copy_That
                                 // Adjust the total bytes processed
                                 totalBytesProcessed -= fileInfoNow.Length;
                                 // Update UI elements and add the skipped file to the list
-                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + "/" + FormatBytes(totalBytes) + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: " + FormatBytes(totalBytesProcessed) + " / " + FormatBytes(totalBytes) + "";
                                 totalCopiedProgressLabel.Refresh();
                                 skippedDataGridView.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
                                 skippedDataGridView.Rows.Add("Skipped: IOException", fileInfoNow.FullName.ToString(), targetDirLabel.Text, fileInfoNow.Name.ToString(), ConvertBytesToMegabytes(fileInfoNow.Length).ToString("00.00 MB"));
@@ -4178,37 +4255,38 @@ namespace Havoc__Copy_That
                                 "" + fileCountOnLabel.Text + "" + Environment.NewLine +
                                 "" + totalCopiedProgressLabel.Text + "", "Copy That - File/Directory Tool - Delete Operation was Canceled!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Reset various operation variables and UI elements
+                // Reset various variables and UI elements
                 num = 0;
+                totalBytes = 0;
+                fileDirDataGridView.Rows.Clear();
+                totalPercentDoubleFile = 0;
+                totalPercentDouble = 0;
+                processedFiles = 0;
                 totalBytes = 0;
                 totalBytesProcessed = 0;
                 totalPercentDouble = 0;
                 pct = 0;
                 fileOn = 0;
                 copyMoveDeleteComboBox.Text = string.Empty;
-                totalCopiedProgressLabel.Text = "Total C/M/D: 0/0 Bytes";
                 elapsedTimeLabel.Text = "Elapsed Time: 00:00:00";
                 timeRemainingLabel.Text = "Time Remaining: 00:00:00";
                 totalProgressBar.Value = 0;
                 fileProgressBar.Value = 0;
                 totalProgressLabel.Text = "0%";
                 fileTotalProgressLabel.Text = "0%";
-                fileCountOnLabel.Text = "File Count: 0/0";
-                speedLabel.Text = "Speed: 0 Mb/Sec.";
                 filePathLabel.Text = "Nothing";
+                fileProcessedLabel.Text = "File Processed: 0 Bytes / 0 Bytes";
+                speedLabel.Text = "Speed: 0 MB/Sec.";
                 fromFilesDirLabel.Text = "Select Files/Directory";
                 targetDirLabel.Text = "SelectFiles/Directory";
-                fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
-                fileDirDataGridView.Rows.Clear();
-
-                // Enable appropriate UI elements and disable others
-                clearFileListButton.Enabled = true;
+                fileCountOnLabel.Text = "File Count: 0 / 0";
+                totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / 0 Bytes";
                 startButton.Enabled = true;
                 cancelButton.Enabled = false;
                 pauseResumeButton.Enabled = false;
+                clearFileListButton.Enabled = true;
                 canceled = false;
                 skipButton.Enabled = false;
-
                 copyMoveDeleteComboBox.Enabled = true;
                 doNotOverwriteCHKBOX.Enabled = true;
                 overwriteAllCHKBOX.Enabled = true;
@@ -4224,6 +4302,12 @@ namespace Havoc__Copy_That
                 fileDownPicBox.Enabled = true;
                 moveTopPicBox.Enabled = true;
                 moveBottomPicBox.Enabled = true;
+                addFileButton.Enabled = true;
+                removeFileButton.Enabled = true;
+                clearFileListButton.Enabled = true;
+                customFolderName = "";
+                fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
+                fileDirDataGridView.Rows.Clear();
 
                 // Enable/disable tab controls based on skipped files presence
                 foreach (DataGridViewColumn column in fileDirDataGridView.Columns)
@@ -4233,11 +4317,11 @@ namespace Havoc__Copy_That
 
                 if (skippedDataGridView.Rows.Count > 0)
                 {
-                    ((Control)this.cmdMainPage).Enabled = false;
+                    ((Control)this.cmdMainPage).Enabled = true;
                     ((Control)this.cmdSkipPage).Enabled = true;
-                    ((Control)this.cmdAboutPage).Enabled = false;
-                    ((Control)this.cmdSettingsPage).Enabled = false;
-                    ((Control)this.cmdCopyHistoryPage).Enabled = false;
+                    ((Control)this.cmdAboutPage).Enabled = true;
+                    ((Control)this.cmdSettingsPage).Enabled = true;
+                    ((Control)this.cmdCopyHistoryPage).Enabled = true;
                     tabControl1.SelectedTab = cmdSkipPage;
                 }
                 else
@@ -4266,37 +4350,38 @@ namespace Havoc__Copy_That
                                 "" + fileCountOnLabel.Text + "" + Environment.NewLine +
                                 "" + totalCopiedProgressLabel.Text + "", "Copy That - File/Directory Tool - Delete Operation Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Reset various operation variables and UI elements
+                // Reset various variables and UI elements
                 num = 0;
+                totalBytes = 0;
+                fileDirDataGridView.Rows.Clear();
+                totalPercentDoubleFile = 0;
+                totalPercentDouble = 0;
+                processedFiles = 0;
                 totalBytes = 0;
                 totalBytesProcessed = 0;
                 totalPercentDouble = 0;
                 pct = 0;
                 fileOn = 0;
                 copyMoveDeleteComboBox.Text = string.Empty;
-                totalCopiedProgressLabel.Text = "Total C/M/D: 0/0 Bytes";
                 elapsedTimeLabel.Text = "Elapsed Time: 00:00:00";
                 timeRemainingLabel.Text = "Time Remaining: 00:00:00";
                 totalProgressBar.Value = 0;
                 fileProgressBar.Value = 0;
                 totalProgressLabel.Text = "0%";
                 fileTotalProgressLabel.Text = "0%";
-                fileCountOnLabel.Text = "File Count: 0/0";
-                speedLabel.Text = "Speed: 0 Mb/Sec.";
                 filePathLabel.Text = "Nothing";
+                fileProcessedLabel.Text = "File Processed: 0 Bytes / 0 Bytes";
+                speedLabel.Text = "Speed: 0 MB/Sec.";
                 fromFilesDirLabel.Text = "Select Files/Directory";
                 targetDirLabel.Text = "SelectFiles/Directory";
-                fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
-                fileDirDataGridView.Rows.Clear();
-
-                // Enable/disable appropriate UI elements
+                fileCountOnLabel.Text = "File Count: 0 / 0";
+                totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / 0 Bytes";
                 startButton.Enabled = true;
                 cancelButton.Enabled = false;
                 pauseResumeButton.Enabled = false;
                 clearFileListButton.Enabled = true;
                 canceled = false;
                 skipButton.Enabled = false;
-
                 copyMoveDeleteComboBox.Enabled = true;
                 doNotOverwriteCHKBOX.Enabled = true;
                 overwriteAllCHKBOX.Enabled = true;
@@ -4312,6 +4397,13 @@ namespace Havoc__Copy_That
                 fileDownPicBox.Enabled = true;
                 moveTopPicBox.Enabled = true;
                 moveBottomPicBox.Enabled = true;
+                addFileButton.Enabled = true;
+                removeFileButton.Enabled = true;
+                clearFileListButton.Enabled = true;
+                customFolderName = "";
+                fileIconPicBox.Image = (Havoc__Copy_That.Properties.Resources.icons8_file_40);
+                fileDirDataGridView.Rows.Clear();
+
 
                 // Enable/disable tab controls based on skipped files presence
                 foreach (DataGridViewColumn column in fileDirDataGridView.Columns)
@@ -4321,11 +4413,11 @@ namespace Havoc__Copy_That
 
                 if (skippedDataGridView.Rows.Count > 0)
                 {
-                    ((Control)this.cmdMainPage).Enabled = false;
+                    ((Control)this.cmdMainPage).Enabled = true;
                     ((Control)this.cmdSkipPage).Enabled = true;
-                    ((Control)this.cmdAboutPage).Enabled = false;
-                    ((Control)this.cmdSettingsPage).Enabled = false;
-                    ((Control)this.cmdCopyHistoryPage).Enabled = false;
+                    ((Control)this.cmdAboutPage).Enabled = true;
+                    ((Control)this.cmdSettingsPage).Enabled = true;
+                    ((Control)this.cmdCopyHistoryPage).Enabled = true;
                     tabControl1.SelectedTab = cmdSkipPage;
                 }
                 else
@@ -4427,8 +4519,8 @@ namespace Havoc__Copy_That
                     // Decrease the file count and total bytes
                     num--;
                     totalBytes -= fi.Length;
-                    fileCountOnLabel.Text = "File Count: 0/" + num.ToString("N0") + "";
-                    totalCopiedProgressLabel.Text = "Total C/M/D: 0/" + FormatBytes(totalBytes);
+                    fileCountOnLabel.Text = "File Count: 0 / " + num.ToString("N0") + "";
+                    totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / " + FormatBytes(totalBytes);
                 }
 
                 // Iterate through each subdirectory in the directory
@@ -4484,7 +4576,7 @@ namespace Havoc__Copy_That
                         long availableSpaceCopyMove = totalDriveSpace - freeDriveSpace;
 
                         // Update UI with total available space information
-                        totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + "/" + FormatBytes(driveSpaceTotal) + "";
+                        totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + " / " + FormatBytes(driveSpaceTotal) + "";
 
                         // Check if there's enough space for the copy operation
                         if (totalBytes >= availableSpaceCopyMove)
@@ -4498,7 +4590,11 @@ namespace Havoc__Copy_That
 
                     // Enable/disable buttons and controls
                     timeRemainingTimer.Start();
+                    addFileButton.Enabled = false;
+                    removeFileButton.Enabled = false;
+                    clearFileListButton.Enabled = false;
                     startButton.Enabled = false;
+
                     cancelButton.Enabled = true;
                     pauseResumeButton.Enabled = true;
                     skipButton.Enabled = true;
@@ -4527,7 +4623,7 @@ namespace Havoc__Copy_That
                     {
                         using (StreamWriter logWriter = new StreamWriter(logFilePath, true))
                         {
-                            logWriter.WriteLine($"Copy process started at {DateTime.Now}");
+                            logWriter.WriteLine($"Copy Process Started At: {DateTime.Now}");
                             logWriter.WriteLine($"Destination Directory: {targetDirLabel.Text}");
                             logWriter.WriteLine();
                         }
@@ -4596,7 +4692,7 @@ namespace Havoc__Copy_That
                         // MessageBox.Show($"Total Drive Space: {FormatBytes(totalDriveSpace)}");
                         // MessageBox.Show($"Free Drive Space: {FormatBytes(availableSpaceCopyMove)} ");
 
-                        totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + "/" + FormatBytes(driveSpaceTotal) + "";
+                        totalHDSpaceLeftLabel.Text = "Total Space: " + FormatBytes(availableSpaceCopyMove) + " / " + FormatBytes(driveSpaceTotal) + "";
 
                         if (totalBytes >= availableSpaceCopyMove)
                         {
@@ -4610,7 +4706,9 @@ namespace Havoc__Copy_That
                     cancelButton.Enabled = true;
                     pauseResumeButton.Enabled = true;
                     skipButton.Enabled = true;
-
+                    addFileButton.Enabled = false;
+                    removeFileButton.Enabled = false;
+                    clearFileListButton.Enabled = false;
                     copyMoveDeleteComboBox.Enabled = false;
                     doNotOverwriteCHKBOX.Enabled = false;
                     overwriteAllCHKBOX.Enabled = false;
@@ -4672,6 +4770,9 @@ namespace Havoc__Copy_That
                 {
                     // Disable buttons and controls
                     startButton.Enabled = false;
+                    addFileButton.Enabled = false;
+                    removeFileButton.Enabled = false;
+                    clearFileListButton.Enabled = false;
                     cancelButton.Enabled = true;
                     pauseResumeButton.Enabled = true;
                     skipButton.Enabled = true;
@@ -5081,7 +5182,7 @@ namespace Havoc__Copy_That
         static string FormatBytes(long bytes)
         {
             // Array of byte size suffixes
-            string[] suffixes = { "B", "KB", "MB", "GB", "TB" };
+            string[] suffixes = { "Bytes", "KB", "MB", "GB", "TB" };
 
             // Initialize index and size
             int index = 0;
@@ -5095,7 +5196,15 @@ namespace Havoc__Copy_That
             }
 
             // Format size and suffix and return
-            return $"{size:00.##} {suffixes[index]}";
+            if (size == 0)
+            {
+                return $"{size:0.##} {suffixes[index]}";
+            }
+            else
+            {
+                return $"{size:00.##} {suffixes[index]}";
+            }
+
         }
 
         // Class to store directory statistics
@@ -5457,8 +5566,8 @@ namespace Havoc__Copy_That
                                     // Update file count and total bytes
                                     num++;
                                     totalBytes += fi2.Length;
-                                    this.fileCountOnLabel.Text = "File Count: 0/" + num.ToString("N0") + "";
-                                    totalCopiedProgressLabel.Text = "Total C/M/D: 0/" + FormatBytes(totalBytes);
+                                    this.fileCountOnLabel.Text = "File Count: 0 / " + num.ToString("N0") + "";
+                                    totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / " + FormatBytes(totalBytes);
                                 }
 
                                 // Expand the DataGridView if necessary
@@ -5548,8 +5657,8 @@ namespace Havoc__Copy_That
                                 // Update file count and total bytes, and remove the selected row
                                 num--;
                                 totalBytes -= fileInfoNow.Length;
-                                this.fileCountOnLabel.Text = "File Count: 0/" + num.ToString("N0") + "";
-                                totalCopiedProgressLabel.Text = "Total C/M/D: 0/" + FormatBytes(totalBytes);
+                                this.fileCountOnLabel.Text = "File Count: 0 / " + num.ToString("N0") + "";
+                                totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / " + FormatBytes(totalBytes);
                                 fileDirDataGridView.Rows.RemoveAt(this.fileDirDataGridView.SelectedRows[0].Index);
 
                                 // Collapse DataGridView if it's empty
@@ -5598,19 +5707,19 @@ namespace Havoc__Copy_That
 
                     // Clear controls and labels
                     copyMoveDeleteComboBox.Text = string.Empty;
-                    totalCopiedProgressLabel.Text = "Total C/M/D: 0/0 Bytes";
+                    totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / 0 Bytes";
                     elapsedTimeLabel.Text = "Elapsed Time: 00:00:00";
                     timeRemainingLabel.Text = "Time Remaining: 00:00:00";
                     totalProgressBar.Value = 0;
                     fileProgressBar.Value = 0;
                     totalProgressLabel.Text = "0%";
                     fileTotalProgressLabel.Text = "0%";
-                    fileCountOnLabel.Text = "File Count: 0/0";
+                    fileCountOnLabel.Text = "File Count: 0 / 0";
                     filePathLabel.Text = "Nothing";
                     fromFilesDirLabel.Text = "Select Files/Directory";
                     targetDirLabel.Text = "Select Files/Directory";
-                    fileProcessedLabel.Text = "File Processed: 0/0 Bytes";
-                    speedLabel.Text = "Speed: 0 Mb/Sec.";
+                    fileProcessedLabel.Text = "File Processed: 0 Bytes / 0 Bytes";
+                    speedLabel.Text = "Speed: 0 MB/Sec.";
 
                     // Enable/disable buttons
                     startButton.Enabled = true;
@@ -5895,8 +6004,8 @@ namespace Havoc__Copy_That
                                                 this.fileDirDataGridView.Rows.Add(Havoc__Copy_That.Properties.Resources.icons8_file_40, "File", fi2.FullName.ToString(), fi2.Name.ToString(), ConvertBytesToMegabytes(fileInfoNow.Length).ToString("00.00 MB"));
                                                 num++;
                                                 totalBytes += fi2.Length;
-                                                this.fileCountOnLabel.Text = "File Count: 0/" + num.ToString("N0") + "";
-                                                totalCopiedProgressLabel.Text = "Total C/M/D: 0/" + FormatBytes(totalBytes);
+                                                this.fileCountOnLabel.Text = "File Count: 0 / " + num.ToString("N0") + "";
+                                                totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / " + FormatBytes(totalBytes);
                                                 // Play a sound if onAddFilesCheckBox is checked
                                                 if (onAddFilesCheckBox.Checked)
                                                 {
@@ -6032,8 +6141,8 @@ namespace Havoc__Copy_That
                                             // Update counters and progress labels
                                             num++;
                                             totalBytes += fi2.Length;
-                                            this.fileCountOnLabel.Text = "File Count: 0/" + num.ToString("N0") + "";
-                                            totalCopiedProgressLabel.Text = "Total C/M/D: 0/" + FormatBytes(totalBytes);
+                                            this.fileCountOnLabel.Text = "File Count: 0 / " + num.ToString("N0") + "";
+                                            totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes / " + FormatBytes(totalBytes);
                                         }
                                         else
                                         {
@@ -6124,8 +6233,8 @@ namespace Havoc__Copy_That
                             {
                                 // Add folder information to the DataGridView
                                 this.fileDirDataGridView.Rows.Add(Havoc__Copy_That.Properties.Resources.icons8_folder_40, "Folder", path.ToString(), fileInfoNow.Name.ToString(), ConvertBytesToMegabytes(totalFolderBytes).ToString("00.00 MB"));
-                                fileCountOnLabel.Text = ($"File Count: 0/{num.ToString("N0")}");
-                                totalCopiedProgressLabel.Text = ($"Total C/M/D: 0/{FormatBytes(totalBytes)}");
+                                fileCountOnLabel.Text = ($"File Count: 0 / {num.ToString("N0")}");
+                                totalCopiedProgressLabel.Text = ($"Total C/M/D: 0 Bytes / {FormatBytes(totalBytes)}");
 
                                 // Select the last row
                                 int lastIndex = fileDirDataGridView.Rows.Count - 1;
@@ -6217,10 +6326,10 @@ namespace Havoc__Copy_That
                 num -= directoryStats.FileCount;
 
                 // Update the file count label
-                fileCountOnLabel.Text = ($"File Count: 0/{num.ToString("N0")}");
+                fileCountOnLabel.Text = ($"File Count: 0 / {num.ToString("N0")}");
 
                 // Update the total copied progress label
-                totalCopiedProgressLabel.Text = ($"Total C/M/D: 0/{FormatBytes(totalBytes)}");
+                totalCopiedProgressLabel.Text = ($"Total C/M/D: 0 Bytes / {FormatBytes(totalBytes)}");
 
                 // Remove the row corresponding to the deleted directory
                 int rowIndex = fileDirDataGridView.CurrentCell.RowIndex;

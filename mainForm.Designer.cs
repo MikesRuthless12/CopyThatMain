@@ -639,9 +639,9 @@
             totalHDSpaceLeftLabel.ForeColor = Color.White;
             totalHDSpaceLeftLabel.Location = new Point(1058, 393);
             totalHDSpaceLeftLabel.Name = "totalHDSpaceLeftLabel";
-            totalHDSpaceLeftLabel.Size = new Size(244, 21);
+            totalHDSpaceLeftLabel.Size = new Size(250, 21);
             totalHDSpaceLeftLabel.TabIndex = 112;
-            totalHDSpaceLeftLabel.Text = "Total Space: 0 Out of 0 Bytes";
+            totalHDSpaceLeftLabel.Text = "Total Space: 0 Bytes / 0 Bytes";
             // 
             // doNotOverwriteCHKBOX
             // 
@@ -931,9 +931,9 @@
             fileProcessedLabel.ForeColor = Color.White;
             fileProcessedLabel.Location = new Point(466, 313);
             fileProcessedLabel.Name = "fileProcessedLabel";
-            fileProcessedLabel.Size = new Size(268, 21);
+            fileProcessedLabel.Size = new Size(279, 21);
             fileProcessedLabel.TabIndex = 84;
-            fileProcessedLabel.Text = "File Processed: 0 Out of 0 Bytes";
+            fileProcessedLabel.Text = "File Processed: 0 Bytes /  0 Bytes";
             fileProcessedLabel.MouseDown += fileProcessedLabel_MouseDown;
             // 
             // copyMoveDeleteComboBox
@@ -953,9 +953,9 @@
             totalCopiedProgressLabel.ForeColor = Color.White;
             totalCopiedProgressLabel.Location = new Point(1058, 313);
             totalCopiedProgressLabel.Name = "totalCopiedProgressLabel";
-            totalCopiedProgressLabel.Size = new Size(244, 21);
+            totalCopiedProgressLabel.Size = new Size(255, 21);
             totalCopiedProgressLabel.TabIndex = 82;
-            totalCopiedProgressLabel.Text = "Total C/M/D: 0 Out of 0 Bytes";
+            totalCopiedProgressLabel.Text = "Total C/M/D: 0 Bytes /  0 Bytes";
             totalCopiedProgressLabel.MouseDown += totalCopiedProgressLabel_MouseDown;
             // 
             // fileCountOnLabel
@@ -1281,10 +1281,10 @@
             cmdSettingsPage.Controls.Add(soundsGroupBox);
             cmdSettingsPage.Controls.Add(skinsLanguageGoupBox);
             cmdSettingsPage.Controls.Add(windowGroupBox);
-            cmdSettingsPage.Location = new Point(4, 30);
+            cmdSettingsPage.Location = new Point(4, 34);
             cmdSettingsPage.Name = "cmdSettingsPage";
             cmdSettingsPage.Padding = new Padding(3);
-            cmdSettingsPage.Size = new Size(1517, 961);
+            cmdSettingsPage.Size = new Size(1517, 957);
             cmdSettingsPage.TabIndex = 3;
             cmdSettingsPage.Text = "- Settings";
             cmdSettingsPage.MouseDown += cmdSettingsPage_MouseDown;
