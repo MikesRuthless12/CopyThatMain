@@ -44,7 +44,6 @@
             openFileDialog = new OpenFileDialog();
             fileDirSizeBGW = new System.ComponentModel.BackgroundWorker();
             removeDirBGW = new System.ComponentModel.BackgroundWorker();
-            scrollTimer = new System.Windows.Forms.Timer(components);
             cmdAboutPage = new TabPage();
             creditsLabel = new Label();
             cmdCopyHistoryPage = new TabPage();
@@ -225,6 +224,7 @@
             rollDownPicBox = new PictureBox();
             rollUpPicBox = new PictureBox();
             titleLabel = new Label();
+            scrollTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)exitPicBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)minimizePicBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)settingsPicBox).BeginInit();
@@ -358,10 +358,6 @@
             // 
             removeDirBGW.DoWork += removeDirBGW_DoWork;
             removeDirBGW.RunWorkerCompleted += removeDirBGW_RunWorkerCompleted;
-            // 
-            // scrollTimer
-            // 
-            scrollTimer.Tick += scrollTimer_Tick;
             // 
             // cmdAboutPage
             // 
@@ -2500,6 +2496,11 @@
             titleLabel.TextAlign = ContentAlignment.MiddleCenter;
             titleLabel.MouseDown += titleLabel_MouseDown;
             // 
+            // scrollTimer
+            // 
+            scrollTimer.Interval = 30;
+            scrollTimer.Tick += scrollTimer_Tick;
+            // 
             // mainForm
             // 
             AllowDrop = true;
@@ -2596,7 +2597,6 @@
         private OpenFileDialog openFileDialog;
         private System.ComponentModel.BackgroundWorker fileDirSizeBGW;
         private System.ComponentModel.BackgroundWorker removeDirBGW;
-        private System.Windows.Forms.Timer scrollTimer;
         private CheckBox createCustomDirCheckBox;
         private Label excludedLabel;
         private CheckBox checkBox6;
@@ -2779,5 +2779,6 @@
         private Label nLabel;
         private Label nwLabel;
         private Label wLabel;
+        private System.Windows.Forms.Timer scrollTimer;
     }
 }

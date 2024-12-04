@@ -6803,6 +6803,9 @@ namespace Havoc__Copy_That
 
         private void cmdSkipPage_MouseDown(object sender, MouseEventArgs e)
         {
+            // Stop and dispose the scrolling timer
+            scrollTimer.Stop();
+            scrollTimer.Dispose();
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
@@ -6812,6 +6815,9 @@ namespace Havoc__Copy_That
 
         private void cmdCopyHistoryPage_MouseDown(object sender, MouseEventArgs e)
         {
+            // Stop and dispose the scrolling timer
+            scrollTimer.Stop();
+            scrollTimer.Dispose();
             // If the left mouse button is clicked
             if (e.Button == MouseButtons.Left)
             {
@@ -6826,6 +6832,9 @@ namespace Havoc__Copy_That
 
         private void cmdSettingsPage_MouseDown(object sender, MouseEventArgs e)
         {
+            // Stop and dispose the scrolling timer
+            scrollTimer.Stop();
+            scrollTimer.Dispose();
             // If the left mouse button is clicked
             if (e.Button == MouseButtons.Left)
             {
@@ -6840,6 +6849,9 @@ namespace Havoc__Copy_That
 
         private void cmdAboutPage_MouseDown(object sender, MouseEventArgs e)
         {
+            // Stop and dispose the scrolling timer
+            scrollTimer.Stop();
+            scrollTimer.Dispose();
             // If the left mouse button is clicked
             if (e.Button == MouseButtons.Left)
             {
@@ -6859,15 +6871,6 @@ namespace Havoc__Copy_That
         /// </summary>
         private void InitializeScrolling()
         {
-            // Create a new timer for scrolling
-            scrollTimer = new Timer();
-
-            // Set the interval for scrolling (adjust as needed)
-            scrollTimer.Interval = 30;
-
-            // Attach an event handler for the Tick event of the timer
-            scrollTimer.Tick += scrollTimer_Tick;
-
             // Start the timer
             scrollTimer.Start();
         }
