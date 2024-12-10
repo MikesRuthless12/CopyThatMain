@@ -36,6 +36,8 @@ using System.Security.Cryptography;
 using Microsoft.Win32;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using String = System.String;
+using SHDocVw;
+using System.Text;
 namespace Havoc__Copy_That
 {
     public partial class mainForm : Form
@@ -113,7 +115,10 @@ namespace Havoc__Copy_That
         public mainForm()
         {
             InitializeComponent();
+            this.AllowDrop = true;
 
+            this.DragEnter += new DragEventHandler(mainForm_DragEnter);
+            this.DragDrop += new DragEventHandler(mainForm_DragDrop);
         }
 
         /// <summary>
@@ -138,6 +143,92 @@ namespace Havoc__Copy_That
         }
 
 
+        private static string GetExplorerPath()
+        {
+            string value = "";
+            // Get the active window (foreground window)
+            IntPtr handle = GetForegroundWindow();
+
+            // Required ref: SHDocVw (Microsoft Internet Controls COM Object) - C:\Windows\system32\ShDocVw.dll
+            ShellWindows shellWindows = new SHDocVw.ShellWindows();
+
+            // Iterate through all Shell Windows
+            foreach (InternetExplorer window in shellWindows)
+            {
+                // Check if this is the foreground window
+                if ((IntPtr)window.HWND == handle)
+                {
+                    // Ensure the window is an Explorer instance
+                    var shellWindow = window.Document as Shell32.IShellFolderViewDual2;
+
+                    if (shellWindow != null)
+                    {
+                        // Retrieve the current folder
+                        var currentFolder = shellWindow.Folder.Items().Item();
+
+                        // Handle special cases like "Desktop"
+                        if (currentFolder == null || currentFolder.Path.StartsWith("::"))
+                        {
+                            // Use window title as fallback
+                            const int nChars = 256;
+                            StringBuilder Buff = new StringBuilder(nChars);
+                            if (GetWindowText(handle, Buff, nChars) > 0)
+                            {
+                                return Buff.ToString();
+                            }
+                        }
+                        else
+                        {
+                            value = currentFolder.Path;
+                            return currentFolder.Path;
+                        }
+                    }
+                }
+            }
+
+            // If the foreground window is not Explorer or there is no path, iterate over all Explorer windows
+            foreach (InternetExplorer window in shellWindows)
+            {
+                // Ensure the window is an Explorer instance
+                var shellWindow = window.Document as Shell32.IShellFolderViewDual2;
+
+                if (shellWindow != null)
+                {
+                    // Retrieve the current folder
+                    var currentFolder = shellWindow.Folder.Items().Item();
+
+                    // Handle special cases like "Desktop"
+                    if (currentFolder == null || currentFolder.Path.StartsWith("::"))
+                    {
+                        // Use window title as fallback
+                        const int nChars = 256;
+                        StringBuilder Buff = new StringBuilder(nChars);
+                        if (GetWindowText((IntPtr)window.HWND, Buff, nChars) > 0)
+                        {
+                            return Buff.ToString();
+                        }
+                    }
+                    else
+                    {
+                        value = currentFolder.Path;
+                        return currentFolder.Path;
+                    }
+                }
+            }
+
+            // Get the user's desktop folder path
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            return (desktopPath);
+
+        }
+
+        // COM Imports
+        [DllImport("user32.dll")]
+        static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
         private void timeRemainingTimer_Tick(object sender, EventArgs e)
         {
             try
@@ -406,7 +497,7 @@ namespace Havoc__Copy_That
                 {
                     // Show a message if the folder is empty
                     MessageBox.Show("Cannot add (" + path.ToString() + ") to the list of files/folders because it is empty ",
-                        "Copy That - File/Directory Tool - Information", MessageBoxButtons.OK,
+                        "Copy That By: Havoc - Information", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                     return;
                 }
@@ -470,11 +561,11 @@ namespace Havoc__Copy_That
             // Update the title label based on whether it's the Pro version or not
             if (proVersion)
             {
-                titleLabel.Text = "Copy That - File/Directory Tool Pro - Home";
+                titleLabel.Text = "Copy That By: Havoc - Pro - Home";
             }
             else
             {
-                titleLabel.Text = "Copy That - File/Directory Tool - Home";
+                titleLabel.Text = "Copy That By: Havoc - Home";
             }
 
             // Set overwrite option to "Overwrite Type - If Newer"
@@ -638,7 +729,7 @@ namespace Havoc__Copy_That
                         // Check if there is enough space available on the drive for the operation
                         if (fc.totalBytes >= availableSpaceCopyMove)
                         {
-                            MessageBox.Show("There is not enough drive space left to perform the move operation!", "Copy That - File/Directory Tool - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("There is not enough drive space left to perform the move operation!", "Copy That By: Havoc - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
@@ -979,7 +1070,7 @@ namespace Havoc__Copy_That
                         // If there's not enough space on the drive, display a message box and return.
                         if (fc.totalBytes >= availableSpaceCopyMove)
                         {
-                            MessageBox.Show("There is not enough drive space left to perform the copy operation. Please remove some files/folders.", "Copy That - File/Directory Tool",
+                            MessageBox.Show("There is not enough drive space left to perform the copy operation. Please remove some files/folders.", "Copy That By: Havoc",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
@@ -1419,7 +1510,7 @@ namespace Havoc__Copy_That
                     "" + overwriteOption + "" + Environment.NewLine +
                     "Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "" + Environment.NewLine +
                     "Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "" + Environment.NewLine +
-                    "" + totalCopiedProgressLabel.Text + "", "Copy That - File/Directory Tool - Move Operation was Canceled!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "" + totalCopiedProgressLabel.Text + "", "Copy That By: Havoc - Move Operation was Canceled!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Reset various variables and UI elements
                 num = 0;
@@ -1497,7 +1588,7 @@ namespace Havoc__Copy_That
                     "" + overwriteOption + "" + Environment.NewLine +
                     "Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "" + Environment.NewLine +
                     "Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "" + Environment.NewLine +
-                    "" + totalCopiedProgressLabel.Text + "", "Copy That - File/Directory Tool - Move Operation was Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "" + totalCopiedProgressLabel.Text + "", "Copy That By: Havoc - Move Operation was Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // Reset various variables and UI elements
                 num = 0;
                 totalBytes = 0;
@@ -2053,7 +2144,7 @@ namespace Havoc__Copy_That
                                         // Checking if available space is enough for copy operation
                                         if (fc.totalBytes >= availableSpaceCopyMove)
                                         {
-                                            MessageBox.Show("There is not enough drive space left to perform the copy operation!", "Copy That - File/Directory Tool - Error!",
+                                            MessageBox.Show("There is not enough drive space left to perform the copy operation!", "Copy That By: Havoc - Error!",
                                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
@@ -3277,7 +3368,7 @@ namespace Havoc__Copy_That
                         "Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "" + Environment.NewLine +
                         "Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "" + Environment.NewLine +
                         "" + totalCopiedProgressLabel.Text + "" + Environment.NewLine +
-                        "Verification Tests: " + verifyStatus + "", "Copy That - File/Directory Tool - Copy Operation was Canceled!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        "Verification Tests: " + verifyStatus + "", "Copy That By: Havoc - Copy Operation was Canceled!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Define the path for the log file
                     string logFilePath = @"\CopyThatLog.txt";
@@ -3535,7 +3626,7 @@ namespace Havoc__Copy_That
                         "Processed File Count: " + processedFiles.ToString("N0") + " / " + num.ToString("N0") + "" + Environment.NewLine +
                         "Skipped File Count: " + skippedDataGridView.Rows.Count + " / " + num.ToString("N0") + "" + Environment.NewLine +
                         "" + totalCopiedProgressLabel.Text + "" + Environment.NewLine +
-                        "Verification Tests: " + verifyStatus + "", "Copy That - File/Directory Tool - Copy Operation was Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        "Verification Tests: " + verifyStatus + "", "Copy That By: Havoc - Copy Operation was Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Define the path for the log file
                     string logFilePath = @"\CopyThatLog.txt";
@@ -4023,7 +4114,7 @@ namespace Havoc__Copy_That
                                 // Handle any exception occurred during directory deletion
                                 MessageBox.Show("Cannot delete the directory: " + sourceDi.Name + ""
                                     + ". You may not have permission to read the directory, or " +
-                                    "don't have the proper authentication.\n\nReported error: " + ex1.Message + "", "Copy That - File/Directory Tool - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    "don't have the proper authentication.\n\nReported error: " + ex1.Message + "", "Copy That By: Havoc - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
@@ -4253,7 +4344,7 @@ namespace Havoc__Copy_That
                 MessageBox.Show("Deletion of Directory was Canceled!" + Environment.NewLine +
                                 "" + elapsedTimeLabel.Text + "" + Environment.NewLine +
                                 "" + fileCountOnLabel.Text + "" + Environment.NewLine +
-                                "" + totalCopiedProgressLabel.Text + "", "Copy That - File/Directory Tool - Delete Operation was Canceled!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                "" + totalCopiedProgressLabel.Text + "", "Copy That By: Havoc - Delete Operation was Canceled!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Reset various variables and UI elements
                 num = 0;
@@ -4348,7 +4439,7 @@ namespace Havoc__Copy_That
                 MessageBox.Show("Deletion of Directory was Completed!" + Environment.NewLine +
                                 "" + elapsedTimeLabel.Text + "" + Environment.NewLine +
                                 "" + fileCountOnLabel.Text + "" + Environment.NewLine +
-                                "" + totalCopiedProgressLabel.Text + "", "Copy That - File/Directory Tool - Delete Operation Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                "" + totalCopiedProgressLabel.Text + "", "Copy That By: Havoc - Delete Operation Completed!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Reset various variables and UI elements
                 num = 0;
@@ -4549,7 +4640,7 @@ namespace Havoc__Copy_That
                 // Display a message informing the user to select directories
                 MessageBox.Show("You must have a directory picked for the from and the target directory. " +
                                 "You don't need a target directory for the Delete Directory option only!",
-                                "Copy That - File/Directory Tool - Information",
+                                "Copy That By: Havoc - Information",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Disable certain buttons and controls
@@ -4582,7 +4673,7 @@ namespace Havoc__Copy_That
                         if (totalBytes >= availableSpaceCopyMove)
                         {
                             MessageBox.Show("There is not enough drive space left to perform the copy operation. Please remove some files/folders.",
-                                            "Copy That - File/Directory Tool",
+                                            "Copy That By: Havoc",
                                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
@@ -4696,7 +4787,7 @@ namespace Havoc__Copy_That
 
                         if (totalBytes >= availableSpaceCopyMove)
                         {
-                            MessageBox.Show("There is not enough drive space left to perform the copy operation. Please remove some files/folders.", "Copy That - File/Directory Tool",
+                            MessageBox.Show("There is not enough drive space left to perform the copy operation. Please remove some files/folders.", "Copy That By: Havoc",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
@@ -4934,7 +5025,7 @@ namespace Havoc__Copy_That
                 if (folderDlg.SelectedPath == Directory.GetDirectoryRoot(folderDlg.SelectedPath))
                 {
                     // Display an error message if trying to perform operations on the root directory
-                    MessageBox.Show("You cannot copy/move/delete the root directory!", "Copy That - File/Directory Tool - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("You cannot copy/move/delete the root directory!", "Copy That By: Havoc - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     noDragDrop = false;
                 }
                 else if (fileDirDataGridView.Rows.Count == 0)
@@ -4961,7 +5052,7 @@ namespace Havoc__Copy_That
                     else
                     {
                         // Display an error message if the folder already exists in the list
-                        MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That - File/Directory Tool - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That By: Havoc - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         noDragDrop = false;
                     }
                 }
@@ -5576,7 +5667,7 @@ namespace Havoc__Copy_That
                             else
                             {
                                 // Show error message if file/folder already exists in the list
-                                MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That - File/Directory Tool - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That By: Havoc - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 noDragDrop = false;
                                 return;
                             }
@@ -5586,14 +5677,14 @@ namespace Havoc__Copy_That
                             // Handle security exception
                             MessageBox.Show("Security error!\n\n" +
                                 "Error message: " + ex.Message + "\n\n" +
-                                "Details:\n\n" + ex.StackTrace + "", "Copy That - File/Directory Tool - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                "Details:\n\n" + ex.StackTrace + "", "Copy That By: Havoc - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         catch (Exception ex)
                         {
                             // Handle other exceptions
                             MessageBox.Show("Cannot display the file: (" + fileInfoNow.Name + ")"
                             + ". You may not have permission to read the file, or " +
-                            "it may be corrupt.\n\nReported error: " + ex.Message + "", "Copy That - File/Directory Tool - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            "it may be corrupt.\n\nReported error: " + ex.Message + "", "Copy That By: Havoc - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -5672,7 +5763,7 @@ namespace Havoc__Copy_That
                     catch (Exception ex)
                     {
                         // Handle exceptions
-                        MessageBox.Show("Error: " + ex.Message, "Copy That - File/Directory Tool - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error: " + ex.Message, "Copy That By: Havoc - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -6017,7 +6108,7 @@ namespace Havoc__Copy_That
                                             else
                                             {
                                                 // Display a message if the file/folder is already added to the list
-                                                MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That - File/Directory Tool - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That By: Havoc - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             }
                                         }
                                     }
@@ -6026,7 +6117,7 @@ namespace Havoc__Copy_That
                             catch (Exception ex)
                             {
                                 // Display an error message if an exception occurs
-                                MessageBox.Show("Error: " + ex.Message, "Copy That - File/Directory Tool - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Error: " + ex.Message, "Copy That By: Havoc - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 startButton.Enabled = true;
                             }
                         }
@@ -6147,7 +6238,7 @@ namespace Havoc__Copy_That
                                         else
                                         {
                                             // Display a message if the file is already in the list
-                                            MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That - File/Directory Tool - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That By: Havoc - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         }
                                     }
                                 }
@@ -6156,7 +6247,7 @@ namespace Havoc__Copy_That
                         catch (Exception ex)
                         {
                             // Handle any exceptions that might occur during the process
-                            MessageBox.Show("Error: " + ex.Message, "Copy That - File/Directory Tool - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Error: " + ex.Message, "Copy That By: Havoc - Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             startButton.Enabled = true;
                         }
 
@@ -6252,13 +6343,13 @@ namespace Havoc__Copy_That
                             }
                             else
                             {
-                                MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That - File/Directory Tool - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("File/Folder was already added to the file/folder list!", "Copy That By: Havoc - File/Folder Already Added!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
                         {
                             MessageBox.Show("Cannot add (" + path.ToString() + ")  to the list of files/folders because it is empty",
-                                "Copy That - File/Directory Tool - Information", MessageBoxButtons.OK,
+                                "Copy That By: Havoc - Information", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
                         }
                     }
@@ -6458,7 +6549,7 @@ namespace Havoc__Copy_That
                 scrollTimer.Dispose();
 
                 // Update the title label based on whether it's the Pro version
-                titleLabel.Text = proVersion ? "Copy That - File/Directory Tool Pro - Home" : "Copy That - File/Directory Tool - Home";
+                titleLabel.Text = proVersion ? "Copy That By: Havoc - Pro - Home" : "Copy That By: Havoc - Home";
 
 
                 // Save settings if auto-save is enabled
@@ -6482,7 +6573,7 @@ namespace Havoc__Copy_That
                 scrollTimer.Dispose();
 
                 // Update the title label based on whether it's the Pro version
-                titleLabel.Text = proVersion ? "Copy That - File/Directory Tool Pro - Allow/Exclude" : "Copy That - File/Directory Tool - Allow/Exclude";
+                titleLabel.Text = proVersion ? "Copy That By: Havoc - Allow/Exclude" : "Copy That By: Havoc - Allow/Exclude";
 
                 // Save settings if auto-save is enabled
                 if (saveAutoCheckBox.Checked)
@@ -6508,7 +6599,7 @@ namespace Havoc__Copy_That
                 scrollTimer.Dispose();
 
                 // Update the title label based on whether it's the Pro version
-                titleLabel.Text = proVersion ? "Copy That - File/Directory Tool Pro - Skipped Files/Dirs." : "Copy That - File/Directory Tool - Skipped Files/Dirs.";
+                titleLabel.Text = proVersion ? "Copy That By: Havoc Pro - Skipped Files/Dirs." : "Copy That By: Havoc - Skipped Files/Dirs.";
 
                 // Save settings if auto-save is enabled
                 if (saveAutoCheckBox.Checked)
@@ -6533,11 +6624,12 @@ namespace Havoc__Copy_That
 
                 // Adjust the position of the credits label
                 creditsLabel.Top = this.ClientSize.Height;
-
+                copyThatPicBox.Top = this.ClientSize.Height;
+                havocSoftwarePicBox.Top = this.ClientSize.Height;
                 // Update the title label and credits label based on whether it's the Pro version
-                titleLabel.Text = proVersion ? "Copy That - File/Directory Tool Pro - About" : "Copy That - File/Directory Tool - About";
-                creditsLabel.Text = proVersion ? "Copy That - File/Directory Tool Pro\r\n\r\nBy: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n"
-                                               : "Copy That - File/Directory Tool\r\n\r\nBy: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
+                titleLabel.Text = proVersion ? "Copy That By: Havoc Pro - About" : "Copy That By: Havoc - About";
+                creditsLabel.Text = proVersion ? "By: Havoc\r\n\r\nVersion: 1.0.0 - Pro\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n"
+                                               : "By: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
 
                 // Save settings if auto-save is enabled
                 if (saveAutoCheckBox.Checked)
@@ -6568,7 +6660,7 @@ namespace Havoc__Copy_That
                 editSavedCheckBoxes();
 
                 // Update the title label based on whether it's the Pro version
-                titleLabel.Text = proVersion ? "Copy That - File/Directory Tool Pro - Settings" : "Copy That - File/Directory Tool - Settings";
+                titleLabel.Text = proVersion ? "Copy That By: Havoc Pro - Settings" : "Copy That By: Havoc - Settings";
 
 
                 string skins = Properties.Settings.Default.skinImage;
@@ -6639,7 +6731,7 @@ namespace Havoc__Copy_That
                 scrollTimer.Dispose();
 
                 // Update the title label based on whether it's the Pro version
-                titleLabel.Text = proVersion ? "Copy That - File/Directory Tool Pro - History" : "Copy That - File/Directory Tool - History";
+                titleLabel.Text = proVersion ? "Copy That By: Havoc Pro - History" : "Copy That By: Havoc - History";
 
                 // Save settings if auto-save is enabled
                 if (saveAutoCheckBox.Checked)
@@ -6878,7 +6970,10 @@ namespace Havoc__Copy_That
 
         private void scrollTimer_Tick(object sender, EventArgs e)
         {
+            creditsLabel.Top = copyThatPicBox.Bottom - 5;
             // Move the label position upwards
+            copyThatPicBox.Top -= scrollSpeed;
+            havocSoftwarePicBox.Top -= scrollSpeed; 
             creditsLabel.Top -= scrollSpeed;
 
             // Check if the label has moved completely off the form
@@ -6886,6 +6981,8 @@ namespace Havoc__Copy_That
             {
                 // Reset the label position to the bottom of the form
                 creditsLabel.Top = this.ClientSize.Height;
+                copyThatPicBox.Top = this.ClientSize.Height;
+                havocSoftwarePicBox.Top = this.ClientSize.Height;
             }
         }
 
@@ -6931,17 +7028,17 @@ namespace Havoc__Copy_That
             // Edit saved checkboxes and credits label
             editSavedCheckBoxes();
             creditsLabel.Top = this.ClientSize.Height;
-
+            copyThatPicBox.Top = this.ClientSize.Height;
             // Update title label and credits label based on the version
             if (proVersion)
             {
-                titleLabel.Text = "Copy That - File/Directory Tool Pro - About";
-                creditsLabel.Text = "Copy That - File/Directory Tool Pro\r\n\r\nBy: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
+                titleLabel.Text = "Copy That By: Havoc Pro - About";
+                creditsLabel.Text = "By: Havoc\r\n\r\nVersion: 1.0.0 - Pro\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
             }
             else
             {
-                titleLabel.Text = "Copy That - File/Directory Tool - About";
-                creditsLabel.Text = "Copy That - File/Directory Tool\r\n\r\nBy: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
+                titleLabel.Text = "Copy That By: Havoc - About";
+                creditsLabel.Text = "By: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
             }
 
             // Initialize scrolling
@@ -6982,11 +7079,11 @@ namespace Havoc__Copy_That
             // Update title label based on the version
             if (proVersion)
             {
-                titleLabel.Text = "Copy That - File/Directory Tool Pro - Settings";
+                titleLabel.Text = "Copy That By: Havoc Pro - Settings";
             }
             else
             {
-                titleLabel.Text = "Copy That - File/Directory Tool - Settings";
+                titleLabel.Text = "Copy That By: Havoc - Settings";
             }
         }
 
@@ -9412,6 +9509,30 @@ namespace Havoc__Copy_That
         int heightNow = 0;
         private void rollUpPicBox_Click(object sender, EventArgs e)
         {
+            // Show the message box with Yes/No buttons
+            DialogResult result = MessageBox.Show("Are you on the Desktop?", "Confirmation", MessageBoxButtons.YesNo);
+
+            // Handle the user's response
+            if (result == DialogResult.Yes)
+            {
+                // Get the user's desktop folder path
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+               MessageBox.Show(desktopPath);
+            }
+            else if (result == DialogResult.No)
+            {
+                try
+                {
+                    MessageBox.Show(GetExplorerPath().ToString());
+                }
+                catch
+                {
+
+                }
+            }
+
+
             // Set the maximum and minimum size of the form
             this.MaximumSize = new System.Drawing.Size(1550, 1075);
             this.MinimumSize = new System.Drawing.Size(1550, 68);

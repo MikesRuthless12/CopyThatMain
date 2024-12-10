@@ -45,6 +45,8 @@
             fileDirSizeBGW = new System.ComponentModel.BackgroundWorker();
             removeDirBGW = new System.ComponentModel.BackgroundWorker();
             cmdAboutPage = new TabPage();
+            havocSoftwarePicBox = new PictureBox();
+            copyThatPicBox = new PictureBox();
             creditsLabel = new Label();
             cmdCopyHistoryPage = new TabPage();
             cmdSkipPage = new TabPage();
@@ -230,6 +232,8 @@
             ((System.ComponentModel.ISupportInitialize)settingsPicBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)aboutPicBox).BeginInit();
             cmdAboutPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)havocSoftwarePicBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)copyThatPicBox).BeginInit();
             cmdSkipPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)skippedDataGridView).BeginInit();
             cmdMainPage.SuspendLayout();
@@ -363,25 +367,49 @@
             // 
             cmdAboutPage.BackColor = Color.Black;
             cmdAboutPage.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdAboutPage.Controls.Add(havocSoftwarePicBox);
+            cmdAboutPage.Controls.Add(copyThatPicBox);
             cmdAboutPage.Controls.Add(creditsLabel);
-            cmdAboutPage.Location = new Point(4, 34);
+            cmdAboutPage.Location = new Point(4, 30);
             cmdAboutPage.Name = "cmdAboutPage";
             cmdAboutPage.Padding = new Padding(3);
-            cmdAboutPage.Size = new Size(1517, 957);
+            cmdAboutPage.Size = new Size(1517, 961);
             cmdAboutPage.TabIndex = 4;
             cmdAboutPage.Text = "- About";
             cmdAboutPage.MouseDown += cmdAboutPage_MouseDown;
+            // 
+            // havocSoftwarePicBox
+            // 
+            havocSoftwarePicBox.BackgroundImageLayout = ImageLayout.Stretch;
+            havocSoftwarePicBox.Image = (Image)resources.GetObject("havocSoftwarePicBox.Image");
+            havocSoftwarePicBox.Location = new Point(774, 6);
+            havocSoftwarePicBox.Name = "havocSoftwarePicBox";
+            havocSoftwarePicBox.Size = new Size(749, 385);
+            havocSoftwarePicBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            havocSoftwarePicBox.TabIndex = 105;
+            havocSoftwarePicBox.TabStop = false;
+            // 
+            // copyThatPicBox
+            // 
+            copyThatPicBox.BackgroundImageLayout = ImageLayout.Stretch;
+            copyThatPicBox.Image = Properties.Resources.Copy_That_Logo;
+            copyThatPicBox.Location = new Point(-7, 6);
+            copyThatPicBox.Name = "copyThatPicBox";
+            copyThatPicBox.Size = new Size(749, 385);
+            copyThatPicBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            copyThatPicBox.TabIndex = 104;
+            copyThatPicBox.TabStop = false;
             // 
             // creditsLabel
             // 
             creditsLabel.AutoSize = true;
             creditsLabel.BackColor = Color.Transparent;
             creditsLabel.Font = new Font("Cascadia Code", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            creditsLabel.Location = new Point(423, 199);
+            creditsLabel.Location = new Point(496, 394);
             creditsLabel.Name = "creditsLabel";
-            creditsLabel.Size = new Size(671, 564);
+            creditsLabel.Size = new Size(524, 470);
             creditsLabel.TabIndex = 35;
-            creditsLabel.Text = "Copy That - File/Directory Tool\r\n\r\nBy: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
+            creditsLabel.Text = "By: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
             creditsLabel.TextAlign = ContentAlignment.MiddleCenter;
             creditsLabel.MouseDown += creditsLabel_MouseDown;
             // 
@@ -2492,7 +2520,7 @@
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new Size(1139, 58);
             titleLabel.TabIndex = 34;
-            titleLabel.Text = "Copy That - File/Directory Tool";
+            titleLabel.Text = "Copy That By: Havoc";
             titleLabel.TextAlign = ContentAlignment.MiddleCenter;
             titleLabel.MouseDown += titleLabel_MouseDown;
             // 
@@ -2522,7 +2550,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "mainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Copy That - File/Directory Tool";
+            Text = "Copy That By: Havoc";
             Load += mainForm_Load;
             DragDrop += mainForm_DragDrop;
             DragEnter += mainForm_DragEnter;
@@ -2534,6 +2562,8 @@
             ((System.ComponentModel.ISupportInitialize)aboutPicBox).EndInit();
             cmdAboutPage.ResumeLayout(false);
             cmdAboutPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)havocSoftwarePicBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)copyThatPicBox).EndInit();
             cmdSkipPage.ResumeLayout(false);
             cmdSkipPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)skippedDataGridView).EndInit();
@@ -2780,5 +2810,7 @@
         private Label nwLabel;
         private Label wLabel;
         private System.Windows.Forms.Timer scrollTimer;
+        private PictureBox copyThatPicBox;
+        private PictureBox havocSoftwarePicBox;
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\miken\\OneDrive\\Desktop\\Havoc- Copy That\\Havoc- Copy That.csproj": {}
+    "C:\\Users\\miken\\OneDrive\\Desktop\\CopyThatMain-main\\Havoc- Copy That.csproj": {}
   },
   "projects": {
-    "C:\\Users\\miken\\OneDrive\\Desktop\\Havoc- Copy That\\Havoc- Copy That.csproj": {
+    "C:\\Users\\miken\\OneDrive\\Desktop\\CopyThatMain-main\\Havoc- Copy That.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\miken\\OneDrive\\Desktop\\Havoc- Copy That\\Havoc- Copy That.csproj",
+        "projectUniqueName": "C:\\Users\\miken\\OneDrive\\Desktop\\CopyThatMain-main\\Havoc- Copy That.csproj",
         "projectName": "Havoc- Copy That",
-        "projectPath": "C:\\Users\\miken\\OneDrive\\Desktop\\Havoc- Copy That\\Havoc- Copy That.csproj",
+        "projectPath": "C:\\Users\\miken\\OneDrive\\Desktop\\CopyThatMain-main\\Havoc- Copy That.csproj",
         "packagesPath": "C:\\Users\\miken\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\miken\\OneDrive\\Desktop\\Havoc- Copy That\\obj\\",
+        "outputPath": "C:\\Users\\miken\\OneDrive\\Desktop\\CopyThatMain-main\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

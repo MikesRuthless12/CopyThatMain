@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kobzTQi+Z8M=",
+  "dgSpecHash": "+RM3afdCglY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\miken\\OneDrive\\Desktop\\Havoc- Copy That\\Havoc- Copy That.csproj",
+  "projectFilePath": "C:\\Users\\miken\\OneDrive\\Desktop\\CopyThatMain-main\\Havoc- Copy That.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\miken\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\miken\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

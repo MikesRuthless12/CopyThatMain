@@ -8,9 +8,9 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageIcon>icons8-maximize-40.png</PackageIcon>
-    <ApplicationIcon>icons8-gas-94.ico</ApplicationIcon>
     <StartupObject>Havoc__Copy_That.Program</StartupObject>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>CopyThatIcon.ico</ApplicationIcon>
+    <ApplicationManifest></ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +26,14 @@
     <None Remove="packages\OpenTK.1.1.2225.0\**" />
     <None Remove="packages\OpenTK.GLControl.1.1.2225.0\**" />
     <None Remove="packages\ZedGraph.5.1.5\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="CopyThat.manifest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="CopyThat.manifest" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,11 +58,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="icons8-gas-94.ico" />
+    <Content Include="CopyThatIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Icons\" />
     <Folder Include="packages\" />
     <Folder Include="Resources\" />
   </ItemGroup>

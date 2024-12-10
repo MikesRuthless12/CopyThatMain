@@ -84,3 +84,29 @@ C:\Users\miken\OneDrive\Desktop\Havoc- Copy That\obj\Debug\net8.0-windows\refint
 C:\Users\miken\OneDrive\Desktop\Havoc- Copy That\obj\Debug\net8.0-windows\Havoc- Copy That.pdb
 C:\Users\miken\OneDrive\Desktop\Havoc- Copy That\obj\Debug\net8.0-windows\Havoc- Copy That.genruntimeconfig.cache
 C:\Users\miken\OneDrive\Desktop\Havoc- Copy That\obj\Debug\net8.0-windows\ref\Havoc- Copy That.dll
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\bin\Debug\net8.0-windows\Havoc- Copy That.exe
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\bin\Debug\net8.0-windows\Havoc- Copy That.dll.config
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\bin\Debug\net8.0-windows\Havoc- Copy That.deps.json
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\bin\Debug\net8.0-windows\Havoc- Copy That.runtimeconfig.json
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\bin\Debug\net8.0-windows\Havoc- Copy That.dll
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\bin\Debug\net8.0-windows\Havoc- Copy That.pdb
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Interop.SHDocVw.dll
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Interop.Shell32.dll
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc- Copy That.csproj.ResolveComReference.cache
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc__Copy_That.CopyHook.resources
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc__Copy_That.copyOrMoveForm.resources
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc__Copy_That.emailForm.resources
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc__Copy_That.Form1.resources
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc__Copy_That.havocForm.resources
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc__Copy_That.mainForm.resources
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc__Copy_That.Properties.Resources.resources
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc- Copy That.csproj.GenerateResource.cache
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc- Copy That.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc- Copy That.AssemblyInfoInputs.cache
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc- Copy That.AssemblyInfo.cs
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc- Copy That.csproj.CoreCompileInputs.cache
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc- Copy That.dll
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\refint\Havoc- Copy That.dll
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc- Copy That.pdb
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\Havoc- Copy That.genruntimeconfig.cache
+C:\Users\miken\OneDrive\Desktop\CopyThatMain-main\obj\Debug\net8.0-windows\ref\Havoc- Copy That.dll
