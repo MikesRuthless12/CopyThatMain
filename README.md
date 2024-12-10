@@ -2,6 +2,10 @@
 
 **Copy That** is a powerful file and directory tool designed to replace the default Windows Explorer copy-and-paste functionality. Built to streamline your workflow, **Copy That** offers any Windows user a faster, more intuitive, and feature-rich experience.
 
+
+<img width="775" alt="Copy That - Main Form Screenshot" src="https://github.com/user-attachments/assets/0fe0ea2c-d398-4617-ae4d-7a5c69582e10">
+
+
 ## Features
 
 - **Drag-and-Drop File Functionality**: Quickly drag and drop files or directories for instant action.
@@ -43,6 +47,3 @@ If you're interested in contributing, here are the steps to set up the developme
 2. Open the solution file in Visual Studio 2022 or later.
 3. Build the project to ensure all dependencies are restored.
 4. Start coding!
-
-<img width="775" alt="Copy That - Main Form Screenshot" src="https://github.com/user-attachments/assets/0fe0ea2c-d398-4617-ae4d-7a5c69582e10">
-
