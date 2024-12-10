@@ -409,7 +409,7 @@
             creditsLabel.Name = "creditsLabel";
             creditsLabel.Size = new Size(524, 470);
             creditsLabel.TabIndex = 35;
-            creditsLabel.Text = "By: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
+            creditsLabel.Text = "By: Havoc\r\n\r\nVersion: 0.1.0-alpha\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
             creditsLabel.TextAlign = ContentAlignment.MiddleCenter;
             creditsLabel.MouseDown += creditsLabel_MouseDown;
             // 

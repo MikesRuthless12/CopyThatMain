@@ -10,7 +10,7 @@
     <PackageIcon>icons8-maximize-40.png</PackageIcon>
     <StartupObject>Havoc__Copy_That.Program</StartupObject>
     <ApplicationIcon>CopyThatIcon.ico</ApplicationIcon>
-    <ApplicationManifest></ApplicationManifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>

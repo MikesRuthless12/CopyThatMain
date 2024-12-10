@@ -6628,8 +6628,8 @@ namespace Havoc__Copy_That
                 havocSoftwarePicBox.Top = this.ClientSize.Height;
                 // Update the title label and credits label based on whether it's the Pro version
                 titleLabel.Text = proVersion ? "Copy That By: Havoc Pro - About" : "Copy That By: Havoc - About";
-                creditsLabel.Text = proVersion ? "By: Havoc\r\n\r\nVersion: 1.0.0 - Pro\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n"
-                                               : "By: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
+                creditsLabel.Text = proVersion ? "By: Havoc\r\n\r\nVersion: 0.1.0-alpha - Pro\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n"
+                                               : "By: Havoc\r\n\r\nVersion: 0.1.0-alpha\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
 
                 // Save settings if auto-save is enabled
                 if (saveAutoCheckBox.Checked)
@@ -7033,12 +7033,12 @@ namespace Havoc__Copy_That
             if (proVersion)
             {
                 titleLabel.Text = "Copy That By: Havoc Pro - About";
-                creditsLabel.Text = "By: Havoc\r\n\r\nVersion: 1.0.0 - Pro\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
+                creditsLabel.Text = "By: Havoc\r\n\r\nVersion: 0.1.0-alpha - Pro\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
             }
             else
             {
                 titleLabel.Text = "Copy That By: Havoc - About";
-                creditsLabel.Text = "By: Havoc\r\n\r\nVersion: 1.0.0\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
+                creditsLabel.Text = "By: Havoc\r\n\r\nVersion: 0.1.0-alpha\r\n\r\nIDE: Visual Studio 2022\r\n\r\nProgramming Language: C#\r\n\r\nFramework: .Net 8.0\r\n\r\n";
             }
 
             // Initialize scrolling
