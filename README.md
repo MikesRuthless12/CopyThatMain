@@ -43,7 +43,7 @@ If you're interested in contributing, here are the steps to set up the developme
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/MikesRuthless12/CopyThatMain/CopyThat.git
+   git clone (https://github.com/MikesRuthless12/CopyThatMain.git)
 2. Open the solution file in Visual Studio 2022 or later.
 3. Build the project to ensure all dependencies are restored.
 4. Start coding!
