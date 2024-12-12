@@ -219,7 +219,6 @@
             allowedLabel = new Label();
             excludedExtListBox = new ListBox();
             allowedExtListBox = new ListBox();
-            notifyIcon1 = new NotifyIcon(components);
             contextMenuStrip1 = new ContextMenuStrip(components);
             showCopyThat = new ToolStripMenuItem();
             exitCopyThat = new ToolStripMenuItem();
@@ -227,6 +226,7 @@
             rollUpPicBox = new PictureBox();
             titleLabel = new Label();
             scrollTimer = new System.Windows.Forms.Timer(components);
+            notifyIcon1 = new NotifyIcon(components);
             ((System.ComponentModel.ISupportInitialize)exitPicBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)minimizePicBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)settingsPicBox).BeginInit();
@@ -370,10 +370,10 @@
             cmdAboutPage.Controls.Add(havocSoftwarePicBox);
             cmdAboutPage.Controls.Add(copyThatPicBox);
             cmdAboutPage.Controls.Add(creditsLabel);
-            cmdAboutPage.Location = new Point(4, 30);
+            cmdAboutPage.Location = new Point(4, 34);
             cmdAboutPage.Name = "cmdAboutPage";
             cmdAboutPage.Padding = new Padding(3);
-            cmdAboutPage.Size = new Size(1517, 961);
+            cmdAboutPage.Size = new Size(1517, 957);
             cmdAboutPage.TabIndex = 4;
             cmdAboutPage.Text = "- About";
             cmdAboutPage.MouseDown += cmdAboutPage_MouseDown;
@@ -1188,6 +1188,8 @@
             targetDirPicBox.TabIndex = 68;
             targetDirPicBox.TabStop = false;
             targetDirPicBox.Click += targetDirPicBox_Click;
+            targetDirPicBox.MouseLeave += targetDirPicBox_MouseLeave;
+            targetDirPicBox.MouseHover += targetDirPicBox_MouseHover;
             // 
             // fromDirPicBox
             // 
@@ -1200,6 +1202,8 @@
             fromDirPicBox.TabIndex = 67;
             fromDirPicBox.TabStop = false;
             fromDirPicBox.Click += fromDirPicBox_Click;
+            fromDirPicBox.MouseLeave += fromDirPicBox_MouseLeave;
+            fromDirPicBox.MouseHover += fromDirPicBox_MouseHover;
             // 
             // fileNamePicBox
             // 
@@ -1305,10 +1309,10 @@
             cmdSettingsPage.Controls.Add(soundsGroupBox);
             cmdSettingsPage.Controls.Add(skinsLanguageGoupBox);
             cmdSettingsPage.Controls.Add(windowGroupBox);
-            cmdSettingsPage.Location = new Point(4, 34);
+            cmdSettingsPage.Location = new Point(4, 30);
             cmdSettingsPage.Name = "cmdSettingsPage";
             cmdSettingsPage.Padding = new Padding(3);
-            cmdSettingsPage.Size = new Size(1517, 957);
+            cmdSettingsPage.Size = new Size(1517, 961);
             cmdSettingsPage.TabIndex = 3;
             cmdSettingsPage.Text = "- Settings";
             cmdSettingsPage.MouseDown += cmdSettingsPage_MouseDown;
@@ -1563,7 +1567,7 @@
             updateManuallyCheckBox.AutoSize = true;
             updateManuallyCheckBox.Checked = true;
             updateManuallyCheckBox.CheckState = CheckState.Checked;
-            updateManuallyCheckBox.Location = new Point(415, 27);
+            updateManuallyCheckBox.Location = new Point(415, 55);
             updateManuallyCheckBox.Name = "updateManuallyCheckBox";
             updateManuallyCheckBox.Size = new Size(171, 25);
             updateManuallyCheckBox.TabIndex = 89;
@@ -1575,7 +1579,7 @@
             // 
             checkForUpdatesButton.BackColor = Color.Black;
             checkForUpdatesButton.ForeColor = Color.White;
-            checkForUpdatesButton.Location = new Point(415, 85);
+            checkForUpdatesButton.Location = new Point(415, 113);
             checkForUpdatesButton.Name = "checkForUpdatesButton";
             checkForUpdatesButton.Size = new Size(209, 34);
             checkForUpdatesButton.TabIndex = 88;
@@ -1585,7 +1589,7 @@
             // updateBetaCheckBox
             // 
             updateBetaCheckBox.AutoSize = true;
-            updateBetaCheckBox.Location = new Point(12, 89);
+            updateBetaCheckBox.Location = new Point(12, 117);
             updateBetaCheckBox.Name = "updateBetaCheckBox";
             updateBetaCheckBox.Size = new Size(200, 25);
             updateBetaCheckBox.TabIndex = 81;
@@ -1596,7 +1600,7 @@
             // updateAutoCheckBox
             // 
             updateAutoCheckBox.AutoSize = true;
-            updateAutoCheckBox.Location = new Point(12, 31);
+            updateAutoCheckBox.Location = new Point(12, 59);
             updateAutoCheckBox.Name = "updateAutoCheckBox";
             updateAutoCheckBox.Size = new Size(248, 25);
             updateAutoCheckBox.TabIndex = 77;
@@ -2459,13 +2463,6 @@
             allowedExtListBox.Size = new Size(574, 382);
             allowedExtListBox.TabIndex = 0;
             // 
-            // notifyIcon1
-            // 
-            notifyIcon1.ContextMenuStrip = contextMenuStrip1;
-            notifyIcon1.Icon = (Icon)resources.GetObject("notifyIcon1.Icon");
-            notifyIcon1.Text = "Copy That File/Directory Tool";
-            notifyIcon1.Visible = true;
-            // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.ImageScalingSize = new Size(24, 24);
@@ -2528,6 +2525,14 @@
             // 
             scrollTimer.Interval = 30;
             scrollTimer.Tick += scrollTimer_Tick;
+            // 
+            // notifyIcon1
+            // 
+            notifyIcon1.ContextMenuStrip = contextMenuStrip1;
+            notifyIcon1.Icon = (Icon)resources.GetObject("notifyIcon1.Icon");
+            notifyIcon1.Text = "Copy That File/Directory Tool";
+            notifyIcon1.Visible = true;
+            notifyIcon1.MouseDoubleClick += notifyIcon1_MouseDoubleClick;
             // 
             // mainForm
             // 
@@ -2758,7 +2763,6 @@
         private Label dragDropLabel;
         private TabControl tabControl1;
         private Label cmOnlyIfLabel;
-        private NotifyIcon notifyIcon1;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem showCopyThat;
         private ToolStripMenuItem exitCopyThat;
@@ -2812,5 +2816,6 @@
         private System.Windows.Forms.Timer scrollTimer;
         private PictureBox copyThatPicBox;
         private PictureBox havocSoftwarePicBox;
+        private NotifyIcon notifyIcon1;
     }
 }
